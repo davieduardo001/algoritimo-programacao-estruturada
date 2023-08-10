@@ -4,7 +4,10 @@ int main ()
 {
     int numero = 200;
 
-    printf("%d \n", &numero); // & (operador unario) NOME DA VARIAVEL retorna o endereço da variavel 
+    printf("%d \n", &numero);   // & (operador unario) em conjunto com o NOME DA VARIAVEL retorna 
+                                // o endereco que o computador setou para aquela variavel
+                                // toda a vez q rodar o programa esse endereco sera diferente
+
     //TODA A VARIAVEL EH ALOCADA EM UM ENDERECO DE MEMORIA
 
     printf("%d \n", numero);
@@ -15,14 +18,14 @@ int main ()
     int numeroApartamento;
     float salarioAnual = 1000.00;
 
-    printf("demonstrando lixo de mem %d \n", num1);
+    printf("demonstrando lixo de mem. %d \n", num1);
 
 
     int apartamento = 204;
     float salario = 2134.3;
     //especificadores de formato
     printf("A variavel numero armazena %i \n", numero);
-    printf("o salario atual eh R$%.2f \n", salarioAnual);
+    printf("o salario atual eh R$%.2f \n", salarioAnual); // %.2f (pega o especificador de formato "f" e formata ele setando 2 casas apos o ponto)
     printf("Jao mora no apartamento %i e ganha R$%.2f por ano \n", apartamento, salario);
     return 0;
 }

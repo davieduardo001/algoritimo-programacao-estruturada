@@ -8,7 +8,7 @@ int main()
 
   printf("DIGITE UM NUMERO INTEIRO: ");
   scanf("%i", &num); //usado para receber dados inteiros e jogar no endereço de mem passado
-                     //para receber textos get, sgets...
+                     //para receber textos (strings) sao usadas outras funcoes, por exemplo: get, sgets...
 
   printf("numero puxado do teclado: %i \n", num);
   return 0;
