@@ -10,6 +10,7 @@ int main() {
     char nome[50];
     int idade;
     float altura;
+    char endereco[70];
     char matricula[30];
     char curso[70];
     char periodo[50];
@@ -26,6 +27,10 @@ int main() {
 
     printf("Escreva sua ALTURA: ");
     scanf("%f", &altura);    
+    fflush(stdin);
+
+    printf("Escreva seu ENDERECO: ");
+    fgets(endereco, 70, stdin);
     fflush(stdin);
 
     printf("Escreva sua MATRICULA: ");
@@ -46,7 +51,8 @@ int main() {
 
     //outputs
     printf("\n\n__DADOS PESSOAIS__\n");
-    printf("Ola, %sVoce tem %.2fm de altura e %d anos.", nome, altura, idade);
+    printf("Ola, %sVoce tem %.2fm de ALTURA e tem %d ANOS.\nMora no ENDERECO: %s", nome, altura, idade, endereco);
+
     printf("\n\n__DADOS ESTUDANTIS__\n");
     printf("Sua matricula: %s", matricula);
     printf("Seu curso: %s", curso);
@@ -54,7 +60,7 @@ int main() {
     printf("As DICIPLINAS desse semestre: %s", diciplinas);
 
     //exit
-    printf("\nObrigado por se cadastrar!\n");
+    printf("\nObrigad@ por se cadastrar!\n");
     printf("\nSaindo do programa...\n\n");
     return 0;
 }
