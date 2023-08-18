@@ -21,8 +21,9 @@ int main(){
 
 
   custoFinal = adicionais + frete + custoInicial;
-  lucro = custoFinal - valorDeVenda;
+  lucro = -1 * (custoFinal - valorDeVenda);
+  lucro = (lucro*100)/custoFinal;
 
-  printf("TEU LUCRO EH DE: %f\n\n", lucro);
+  printf("TEU LUCRO EH DE: %.2f%\n\n", lucro);
   return 0;
 }
