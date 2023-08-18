@@ -10,8 +10,6 @@ int main()
   time_t today = time(NULL);
   struct tm tm = *localtime(&today);
 
-  printf("now: %d-%02d-%02d %02d:%02d%02d\n\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-
   printf("Voce nasceu em qual ano? ");
   scanf("%i", &anos);
   fflush(stdin);
