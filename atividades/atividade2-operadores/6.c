@@ -1,17 +1,24 @@
 #include<stdio.h>
+#include<math.h>
 
-//6. Escreva um programa que pergunte qual o raio de um círculo e imprima a sua área. 
+//! 6. Escreva um programa que pergunte qual o raio de um círculo e imprima a sua área. 
 
-int main () {
+int main() {
   
-  float raio, area;
+  //* variables
+  double raio, area, PI = 3.1425; //! ao adiionar uma constante se coloca em letra maiuscula
 
+  //* inputs
   printf("qual o raio do circulo? ");
-  scanf("%f", &raio);
+  scanf("%lf", &raio);
 
-  area = 3.14*(raio*raio);
+  //* computing
+  area = PI * (pow(raio, 2)); // (raio*raio)
 
-  printf("a area desse ciruculo seria: %.2f", area);
+  //* outputs
+  printf("a area desse ciruculo seria: %.2lf", area);
+
+  if (4 >= ) {}
   
   return 0;
 }

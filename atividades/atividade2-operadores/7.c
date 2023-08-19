@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <time.h>
 
-// 7. Faça um algoritmo que leia a idade de uma pessoa expressa em anos, meses e dias e escreva a idade dessa pessoa expressa apenas em dias. Considerar ano com 365 dias e mês com 30 dias.
+//! 7. Faça um algoritmo que leia a idade de uma pessoa expressa em anos, meses e dias e escreva a idade dessa pessoa expressa apenas em dias. Considerar ano com 365 dias e mês com 30 dias.
 
-int main()
-{
+int main() {
+
+  //* variables
   int anos, meses, dias, totalDeDias;
-
   time_t today = time(NULL);
   struct tm tm = *localtime(&today);
 
+  //* inputs
   printf("Voce nasceu em qual ano? ");
   scanf("%i", &anos);
   fflush(stdin);
@@ -22,10 +23,16 @@ int main()
   scanf("%i", &dias);
   fflush(stdin);
 
-  if (meses <= tm.tm_mon + 1)
-  {
+  //* computing
 
-    printf("\n\nDIAS VIVIDOS\n");
+  /*
+    pegar quantos anos meses e dias de cabeça e fazer o calculo
+    totalDeDias = (anos * 365) + (meses * 30) + (dias) ;-; 
+  */ 
+  
+  printf("\n\nDIAS VIVIDOS\n");
+
+  if(meses <= tm.tm_mon + 1) {
 
     anos = (tm.tm_year + 1900 - anos);
     printf("* %d anos\n", anos);
@@ -40,10 +47,7 @@ int main()
     printf("* %d dias\n", dias);
 
     totalDeDias = dias + meses + anos;
-  }
-  else
-  {
-    printf("\n\nDIAS VIVIDOS\n");
+  } else {
 
     anos = (((tm.tm_year + 1900) - anos) - 1);
     printf("* %d anos\n", anos);
@@ -60,6 +64,7 @@ int main()
     totalDeDias = dias + meses + anos;
   }
 
+  //* outputs
   printf("\n\nSUA IDADE EM DIAS EH: %d\n", totalDeDias);
 
   return 0;
