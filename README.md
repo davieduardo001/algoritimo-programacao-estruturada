@@ -2,7 +2,7 @@
 * O objetivo é aprender a lógica.
 * Organizar em sequências de passos:
 	* Resolver um problema
-	     * Aprender a fazer um passo a passo (ou seja, um algoritmo)
+	* Aprender a fazer um passo a passo (ou seja, um algoritmo)
 * Aprender a olhar um problema e aplicar as estruturas de desenvolvimento de software
 * Organização de pensamentos de forma lógica
 * Um programados faz: 60% aplicar lógica de programação, 20% aplicação de algoritmos, 20% testes, compilação, etc.
@@ -11,10 +11,10 @@
 
 ## Algorimos sao feitos passo a passo
 * de modo a fazer um problema ser quebrado em varios outros menores, deixando mais facil a sua leitura e desenvolvimento
-	1. Passo 1: declaracao de variaveis
-	2. Passo 2: recebimento de dados
-	3. Passo 3: processamento
-	4. Passo 4: retorno
+	1. Passo: declaracao de variaveis
+	2. Passo: recebimento de dados
+	3. Passo: processamento
+	4. Passo: retorno
 
 ## Operadores
 * *Aritmeticos:*
@@ -152,3 +152,27 @@ res (0 ou 1); //vai receber dependendo do resultado da operacao
       // se em uma das condicoes acima for satisfeita ira cair nesse code block
     }
 ```
+## Operadores Logicos
+> considerados operadores conectivos. representam o recurso q nos permite criar expressoes logicas maiores a partir da juncao de duas ou mais expressoes. Para isso, aplicamos as operacoes logicas: 
+* E (&&)
+* OU (||)
+* nao (!)
+
+```c
+  //no E todos devem ser verdadeiras
+  (v) && (v) = v
+  (v) && (f) = f
+  //no OU apenas uma eh necessaria ser verdadeira, soh vai ser false se todas forem falsas
+  (v) || (v) = v
+  (v) || (f) = v
+  (f) || (v) = v
+  (f) || (f) = f
+  //Nega a afirmacao
+  (!v) = f
+  (!f) = v
+```
+
+## Operadores de incremento e decremento
+> 
+
+* 

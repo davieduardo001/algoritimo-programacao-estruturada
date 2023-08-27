@@ -9,7 +9,9 @@ int main() {
     scanf("%d", &idade);
 
     if(idade >= 18)
-        printf("Eh de maior\n");    
+      printf("Eh de maior\n");
+    else 
+      printf("Voce eh de menor");
 
     return 0;
 }
