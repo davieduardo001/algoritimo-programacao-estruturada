@@ -173,6 +173,4 @@ res (0 ou 1); //vai receber dependendo do resultado da operacao
 ```
 
 ## Operadores de incremento e decremento
-> 
-
-* 
+> ++, -- (incrementa 1 ao numero e decrementa 1 ao numero)
