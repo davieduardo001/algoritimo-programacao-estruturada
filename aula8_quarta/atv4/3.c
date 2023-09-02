@@ -23,7 +23,9 @@ int main()
     menor = C;
 
   if ((maior == A && menor == B) || (maior == B && menor == A))
+  {
     p2 = C;
+  }
   else if ((maior == A && menor == C) || (maior == C && menor == A))
   {
     p2 = B;

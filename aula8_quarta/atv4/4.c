@@ -22,17 +22,19 @@ int main() {
     menor = C;
 
   if ((maior == A && menor == B) || (maior == B && p2 == A))
+  {
     p2 = C;
+  }
   else if ((maior == A && menor == C) || (maior == C && menor == A))
+  {
     p2 = B;
+  }
   else if ((maior == B && menor == C) || (maior == C && menor == B))
   {
     p2 = A;
   }
-
-    printf("sequencia decrescente: %d, %d e %d\n", maior, p2, menor);
-
-
-
+  
+  printf("sequencia decrescente: %d, %d e %d\n", maior, p2, menor);
+  
   return 0;
 }
