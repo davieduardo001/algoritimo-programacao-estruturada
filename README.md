@@ -174,3 +174,24 @@ res (0 ou 1); //vai receber dependendo do resultado da operacao
 
 ## Operadores de incremento e decremento
 > ++, -- (incrementa 1 ao numero e decrementa 1 ao numero)
+
+## Switch case
+* tem-se um valor e necessita-se de verificar uma comparacao
+	* e se executa ao final do switch
+```c
+switch (valor)
+{
+	case 1:
+		printf("domingo\n");
+		break;
+	case 2:
+		printf("segunda\n");
+		break;
+	case 3:
+		printf("terca\n");
+		break;
+	default:
+		//something
+		break;
+}
+```
