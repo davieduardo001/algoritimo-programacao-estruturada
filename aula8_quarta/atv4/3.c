@@ -6,34 +6,34 @@ int main()
 
   int A = 432, B = 32, C = 1;
   // int numerosEmOrdem[5];
-  int p1 = A, p2, p3 = C;
+  int maior = A, p2, menor = C;
 
-  if (p1 < A)
-    p1 = A;
-  if (p1 < B)
-    p1 = B;
-  if (p1 < C)
-    p1 = C;
+  if (maior < A)
+    maior = A;
+  if (maior < B)
+    maior = B;
+  if (maior < C)
+    maior = C;
 
-  if (p3 > A)
-    p3 = A;
-  if (p3 > B)
-    p3 = B;
-  if (p3 > C)
-    p3 = C;
+  if (menor > A)
+    menor = A;
+  if (menor > B)
+    menor = B;
+  if (menor > C)
+    menor = C;
 
-  if ((p1 == A && p3 == B) || (p1 == B && p3 == A))
+  if ((maior == A && menor == B) || (maior == B && menor == A))
     p2 = C;
-  else if ((p1 == A && p3 == C) || (p1 == C && p3 == A))
+  else if ((maior == A && menor == C) || (maior == C && menor == A))
   {
     p2 = B;
   }
-  else if ((p1 == B && p3 == C) || (p1 == C && p3 == B))
+  else if ((maior == B && menor == C) || (maior == C && menor == B))
   {
     p2 = A;
   }
 
-  printf("sequencia crescente: %d, %d e %d\n", p3, p2, p1);
+  printf("sequencia crescente: %d, %d e %d\n", menor, p2, maior);
 
   return 0;
 }
