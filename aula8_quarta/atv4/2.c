@@ -6,29 +6,29 @@ int main()
 
   int A = -8, B = 54, C = 4, D = 32;
   // int numerosEmOrdem[5];
-  int p1 = A, p4 = D;
+  int maior = A, menor = D;
 
-  if (p1 < A)
-    p1 = A;
-  if (p1 < B)
-    p1 = B;
-  if (p1 < C)
-    p1 = C;
-  if (p1 < D)
-    p1 = D;
+  if (maior < A)
+    maior = A;
+  if (maior < B)
+    maior = B;
+  if (maior < C)
+    maior = C;
+  if (maior < D)
+    maior = D;
 
-  if (p4 > A)
-    p4 = A;
-  if (p4 > B)
-    p4 = B;
-  if (p4 > C)
-    p4 = C;
-  if (p4 > D)
-    p4 = D;
+  if (menor > A)
+    menor = A;
+  if (menor > B)
+    menor = B;
+  if (menor > C)
+    menor = C;
+  if (menor > D)
+    menor = D;
 
 
-  printf("o maior numero eh: %d\n", p1);
-  printf("o menor numero eh: %d\n", p4);
+  printf("o maior numero eh: %d\n", maior);
+  printf("o menor numero eh: %d\n", menor);
 
   return 0;
 }
