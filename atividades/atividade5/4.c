@@ -31,7 +31,7 @@ int main()
     salarioFinal = salarioAtual + 500;
   else {
     printf("salario ou tempo de servico nao entram nos parametros de aumento salarial\n");
-    return 0;
+    return 1;
   }
 
   printf("Seu salario final eh de: %.2f\n", salarioFinal);
