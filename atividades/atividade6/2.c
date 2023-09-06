@@ -47,7 +47,7 @@ int main()
     item.name = "Cheeseburger";
     break;
   default:
-    printf("nn tem itens com esse codigo .-.");
+    printf("nn tem itens com esse codigo .-.\n");
     return 1;
   }
 

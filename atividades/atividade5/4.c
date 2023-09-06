@@ -21,19 +21,20 @@ int main()
 
   if ((salarioAtual <= 500) && (tempoDeServico < 1))
     salarioFinal = salarioAtual + (salarioAtual * 0.25);
-  else if ((salarioAtual <= 1000) && ((tempoDeServico >= 1) && (tempoDeServico <= 3)))
+  else if ((salarioAtual <= 1000) && ((tempoDeServico >= 1) && (tempoDeServico <= 4)))
     salarioFinal = salarioAtual + (salarioAtual * 0.20) + 100;
-  else if ((salarioAtual <= 1500) && ((tempoDeServico >= 4) && (tempoDeServico <= 6)))
+  else if ((salarioAtual <= 1500) && ((tempoDeServico >= 4) && (tempoDeServico <= 7)))
     salarioFinal = salarioAtual + (salarioAtual * 0.15) + 200;
   else if ((salarioAtual <= 2000) && ((tempoDeServico >= 7) && (tempoDeServico <= 10)))
     salarioFinal = salarioAtual + (salarioAtual * 0.10) + 300;
   else if ((salarioAtual > 2000) && (tempoDeServico > 10))
     salarioFinal = salarioAtual + 500;
-  else {
-    printf("salario ou tempo de servico nao entram nos parametros de aumento salarial\n");
+  else if ((salarioAtual > 2000) && (tempoDeServico < 10)){
+    printf("nao tem direito ao aumento\n");
     return 1;
   }
 
   printf("Seu salario final eh de: %.2f\n", salarioFinal);
+
   return 0;
 }

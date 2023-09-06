@@ -22,7 +22,7 @@ int main()
 
   delta = ((b * b) - (4 * a * c));
 
-  if (b > 0)
+  if (a > 0)
   {
     if (delta < 0)
       printf("nao existe raiz.\n");
