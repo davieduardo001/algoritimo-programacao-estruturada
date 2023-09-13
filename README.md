@@ -173,7 +173,17 @@ res (0 ou 1); //vai receber dependendo do resultado da operacao
 ```
 
 ## Operadores de incremento e decremento
-> ++, -- (incrementa 1 ao numero e decrementa 1 ao numero)
+```C
+// ++, -- (incrementa 1 ao numero e decrementa 1 ao numero)
+int x = 1, y = 2;
+x++; // x == 2
+y++; // y == 3
+
+// +=, -=, *=... A operacao eh feita com a variavel passada como se ela tivesse sendo passada para ela mesma. Isso vale para qualquer operacao que nao seja o de modulo (%).
+x = 4;
+x += 1; // x = x + 1 OU x = 4 + 1 .: x == 9
+``` 
+> 
 
 ## Switch case
 * tem-se um valor e necessita-se de verificar uma comparacao
@@ -194,4 +204,30 @@ switch (valor)
 		//something
 		break;
 }
+```
+
+## Loops
+* Para q usar loops?
+> Os loops podem executar um bloco de código desde que uma condição especificada seja atingida.
+> Os loops são úteis porque economizam tempo, reduzem erros e tornam o código mais legível.
+```C
+// For loop
+for (int i = 0; i < 10; i++)
+{
+	//code block
+}
+
+// While loop
+int x = 0;
+while (x < 10)
+{
+	//code block
+}
+
+// Do while loop
+int y = 0;
+do
+{
+	// code block
+} while (y < 10);
 ```
