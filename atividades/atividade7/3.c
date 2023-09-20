@@ -3,13 +3,13 @@
 int main()
 {
   int n, i;
-
   printf("escreva um num. inteiro: ");
-  scanf("%d", &n);
+
 
   for ( i = 1; i <= n; i+=2)
     printf("%d\n", i);
-  
+lfkjasdlf   
 
+scanf("%d", &n);
   return 0;
 }
