@@ -4,7 +4,6 @@
 // functions prototypes
 // verifica o periodo e o elevador referente a esse periodo
 void VerificarPeriodoMaisUsado(int, char, int, char, int, int, int, int, int, int, int, int);
-void VerificarMaiorNaRelacaoElevadorPeriodo(int, char, int, char, int, int, int, int, int, int, int, int);
 
 struct morador
 {
@@ -14,7 +13,7 @@ struct morador
 
 int main()
 {
-  int moradoresTotais = 3;
+  int moradoresTotais = 50;
   struct morador moradores[moradoresTotais];
   // contadores gerais
   int count, countMatutino = 0, countVespertino = 0, countNoturno = 0, countA = 0, countB = 0, countC = 0;
@@ -26,6 +25,11 @@ int main()
   // periodos e elevadores mais usados
   char periodoMaisUsado, elevadorMaisUsado, periodoMaisUsadoReferentePeriodo;
   int mediaDeRepostasRuins = 0;
+  // horaio mais usado GERAL
+  int horarioMaisUsado = 0, horarioMenosUsado = 0;
+  float diferencaPercentualMaiorEMenor = 0;
+  // media duracao porcentagem
+  float porcentagemMediaDuracao;
 
   // INPUT
   count = 0;
@@ -64,26 +68,6 @@ int main()
     else if (moradores[count].elevador == 'C')
       countC++;
 
-    // verifica qual eh a relacao entre horario e elevador
-    if (moradores[count].horario == 'M' && moradores[count].elevador == 'A')
-      countMatutinoA++;
-    if (moradores[count].horario == 'M' && moradores[count].elevador == 'B')
-      countMatutinoB++;
-    if (moradores[count].horario == 'M' && moradores[count].elevador == 'C')
-      countMatutinoC++;
-    if (moradores[count].horario == 'V' && moradores[count].elevador == 'A')
-      countVespertinoA++;
-    if (moradores[count].horario == 'V' && moradores[count].elevador == 'B')
-      countVespertinoB++;
-    if (moradores[count].horario == 'V' && moradores[count].elevador == 'C')
-      countVespertinoC++;
-    if (moradores[count].horario == 'N' && moradores[count].elevador == 'A')
-      countNoturnoA++;
-    if (moradores[count].horario == 'N' && moradores[count].elevador == 'B')
-      countNoturnoB++;
-    if (moradores[count].horario == 'N' && moradores[count].elevador == 'C')
-      countNoturnoC++;
-
     // verifica a relacao entre elevador e horario
     if (moradores[count].horario == 'M' && moradores[count].elevador == 'A')
       aMatutino++;
@@ -108,10 +92,46 @@ int main()
   } while (count < moradoresTotais);
 
   // COMPUTING
-  for (int i = 0; count < moradoresTotais; count++)
-    if (moradores[i].horario == 'D')
-    
+  // verificar horario mais usado e o menos usado
+  horarioMaisUsado = countMatutino;
+  if (horarioMaisUsado < countMatutino)
+    horarioMaisUsado = countMatutino;
+  if (horarioMaisUsado < countVespertino)
+    horarioMaisUsado = countVespertino;
+  if (horarioMaisUsado < countNoturno)
+    horarioMaisUsado = countNoturno;
+
+  horarioMenosUsado = countMatutino;
+  if (horarioMenosUsado > countMatutino)
+    horarioMenosUsado = countMatutino;
+  if (horarioMenosUsado > countVespertino)
+    horarioMenosUsado = countVespertino;
+  if (horarioMenosUsado > countNoturno)
+    horarioMenosUsado = countNoturno;
+  if (horarioMenosUsado == 0)
+    horarioMenosUsado = 1;
+  diferencaPercentualMaiorEMenor = ((((float)horarioMaisUsado - horarioMenosUsado) / horarioMenosUsado) * 100);
+
+  // verificar a porcentagem elevador de media utilizacao
+  porcentagemMediaDuracao = countMatutino;
+  printf("HORARIO MAIS USADOOOO: %i\n", porcentagemMediaDuracao);
+  if (horarioMaisUsado == countMatutino && horarioMaisUsado == countNoturno || (horarioMaisUsado == (countNoturno + 1)))
+    porcentagemMediaDuracao = countVespertino;
+  else if (horarioMaisUsado == countMatutino && horarioMaisUsado == countVespertino || horarioMaisUsado == (countVespertino + 1))
+    porcentagemMediaDuracao = countNoturno;
+  else if (horarioMaisUsado == countVespertino && (horarioMaisUsado == countMatutino || horarioMaisUsado == (countNoturno + 1)))
+    porcentagemMediaDuracao = countNoturno;
+  else if (horarioMaisUsado == countVespertino && (horarioMaisUsado == countNoturno || horarioMaisUsado == (countNoturno + 1)))
+    porcentagemMediaDuracao = countMatutino;
+  else if (horarioMaisUsado == countNoturno && (horarioMaisUsado == countMatutino || horarioMaisUsado == (countMatutino + 1)))
+    porcentagemMediaDuracao = countVespertino;
+  else if (horarioMaisUsado == countNoturno && (horarioMaisUsado == countVespertino || horarioMaisUsado == (countVespertino + 1)))
+    porcentagemMediaDuracao = countMatutino;
+  printf("HORARIO MAIS USADOOOO: %i\n", porcentagemMediaDuracao);
+  porcentagemMediaDuracao = (porcentagemMediaDuracao * 100) / (float)moradoresTotais;
+
   // OUTPUT
+
   printf("\n-----OS INPUTS FORAM-----\n");
   for (count = 0; count < moradoresTotais; count++)
   {
@@ -124,12 +144,20 @@ int main()
   printf("\n-----OS TOTAIS FORAM-----\n");
   printf("Elevador A: %i\nElevador B: %i\nElevador C: %i\nMatutino: %i\nVespertino: %i\nNoturno: %i\n", countA, countB, countC, countMatutino, countVespertino, countNoturno);
 
-  // periodo mais usado
-  printf("\n-----O PERIODO MAIS USADO E O ELEVADOR MAIS USADO NO PERIODO-----\n");
-  VerificarPeriodoMaisUsado(countPeriodoMaisUsado, periodoMaisUsado, countMatutinoA, elevadorMaisUsado, countMatutinoB, countMatutinoC, countVespertinoA, countVespertinoB, countVespertinoC, countNoturnoA, countNoturnoB, countNoturnoC);
+  printf("\n-----OS TOTAIS RELACIONADOS FORAM-----\n");
+  printf("Elevador A Matutino: %i\nElevador B Matutino: %i\nElevador C matutino: %i\nElvador A Vespertino: %i\nElevador B Vespertino: %i\nElevador C Vespertino: %i\nElevador A Noturno: %i\nElevador B Noturno: %i\nElevador C Noturno: %i\n", aMatutino, bMantutino, cMatutino, aVespertino, bVespertino, cVespertino, aNoturno, bNoturno, cNoturno);
 
-  printf("\n-----O ELEVADOR MAIS USADO E O PERIODO REFERENTE A ESSE----------");
-  VerificarMaiorNaRelacaoElevadorPeriodo(countElevadorMaisUsado, periodoMaisUsado, aMatutino, elevadorMaisUsado, bMantutino, cMatutino, aVespertino, bVespertino, cVespertino, aNoturno, bNoturno, cNoturno);
+  // periodo mais usado
+  printf("\n\n-----O PERIODO MAIS USADO E O ELEVADOR MAIS USADO NO PERIODO-----\n");
+  VerificarPeriodoMaisUsado(countPeriodoMaisUsado, periodoMaisUsado, aMatutino, elevadorMaisUsado, bMantutino, cMatutino, aVespertino, bVespertino, cVespertino, aNoturno, bNoturno, cNoturno);
+
+  // horarios mais e menos usado e diferenca percentual
+  printf("\n-----A DIFERENCA PERCENTUAL DOS HORARIOS MAIS E MENOS UTILIZADO EH----------\n");
+  printf("Diferenca percentual: %%%.2f\n", diferencaPercentualMaiorEMenor);
+
+  // porcentagem do elevador de media duracao
+  printf("\n-----A DIFERENCA PERCENTUAL DOS HORARIOS MAIS E MENOS UTILIZADO EH----------\n");
+  printf("Media duracao: %%%.2f\n", porcentagemMediaDuracao);
 
   return 0;
 }
@@ -137,6 +165,8 @@ int main()
 void VerificarPeriodoMaisUsado(int countPeriodoMaisUsado, char periodoMaisUsado, int countMatutinoA, char elevadorMaisUsado, int countMatutinoB, int countMatutinoC, int countVespertinoA, int countVespertinoB, int countVespertinoC, int countNoturnoA, int countNoturnoB, int countNoturnoC)
 {
   countPeriodoMaisUsado = countMatutinoA;
+  periodoMaisUsado = 'M';
+  elevadorMaisUsado = 'A';
   if (countPeriodoMaisUsado < countMatutinoA)
   {
     periodoMaisUsado = 'M';
@@ -181,77 +211,16 @@ void VerificarPeriodoMaisUsado(int countPeriodoMaisUsado, char periodoMaisUsado,
   }
   if (countPeriodoMaisUsado < countNoturnoB)
   {
-    periodoMaisUsado = 'V';
+    periodoMaisUsado = 'N';
     elevadorMaisUsado = 'B';
     countPeriodoMaisUsado = countNoturnoB;
   }
   if (countPeriodoMaisUsado < countNoturnoC)
   {
-    periodoMaisUsado = 'V';
+    periodoMaisUsado = 'N';
     elevadorMaisUsado = 'C';
     countPeriodoMaisUsado = countNoturnoC;
   }
 
   printf("O periodo mais usado eh o: %c\nE o elevador mais usado nesse periodo eh o: %c\n", periodoMaisUsado, elevadorMaisUsado);
-}
-
-void VerificarMaiorNaRelacaoElevadorPeriodo(int countElevadorMaisUsado, char periodoMaisUsado, int countMatutinoA, char elevadorMaisUsado, int countMatutinoB, int countMatutinoC, int countVespertinoA, int countVespertinoB, int countVespertinoC, int countNoturnoA, int countNoturnoB, int countNoturnoC)
-{
-  countElevadorMaisUsado = countMatutinoA;
-  if (countElevadorMaisUsado < countMatutinoA)
-  {
-    periodoMaisUsado = 'M';
-    elevadorMaisUsado = 'A';
-    countElevadorMaisUsado = countMatutinoA;
-  }
-  if (countElevadorMaisUsado < countMatutinoB)
-  {
-    periodoMaisUsado = 'M';
-    elevadorMaisUsado = 'B';
-    countElevadorMaisUsado = countMatutinoB;
-  }
-  if (countElevadorMaisUsado < countMatutinoC)
-  {
-    periodoMaisUsado = 'M';
-    elevadorMaisUsado = 'C';
-    countElevadorMaisUsado = countMatutinoC;
-  }
-  if (countElevadorMaisUsado < countVespertinoA)
-  {
-    periodoMaisUsado = 'V';
-    elevadorMaisUsado = 'A';
-    countElevadorMaisUsado = countVespertinoA;
-  }
-  if (countElevadorMaisUsado < countVespertinoB)
-  {
-    periodoMaisUsado = 'V';
-    elevadorMaisUsado = 'B';
-    countElevadorMaisUsado = countVespertinoB;
-  }
-  if (countElevadorMaisUsado < countVespertinoC)
-  {
-    periodoMaisUsado = 'V';
-    elevadorMaisUsado = 'C';
-    countElevadorMaisUsado = countVespertinoC;
-  }
-  if (countElevadorMaisUsado < countNoturnoA)
-  {
-    periodoMaisUsado = 'N';
-    elevadorMaisUsado = 'A';
-    countElevadorMaisUsado = countVespertinoA;
-  }
-  if (countElevadorMaisUsado < countNoturnoB)
-  {
-    periodoMaisUsado = 'V';
-    elevadorMaisUsado = 'B';
-    countElevadorMaisUsado = countNoturnoB;
-  }
-  if (countElevadorMaisUsado < countNoturnoC)
-  {
-    periodoMaisUsado = 'V';
-    elevadorMaisUsado = 'C';
-    countElevadorMaisUsado = countNoturnoC;
-  }
-
-  printf("E o elevador mais usado eh o: %c\nO periodo mais usado referente a esse elevador eh o: %c\n\n", elevadorMaisUsado, periodoMaisUsado);
 }

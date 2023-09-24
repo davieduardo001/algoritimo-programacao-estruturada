@@ -231,3 +231,66 @@ do
 	// code block
 } while (y < 10);
 ```
+
+## VETORES / ARRAY
+> eh uma colecao de elementos do mesmo tipo em uma variavel
+* cada array tem: 
+	1. um endereco da posicao = indice
+	2. um endereco na memoria
+	3. o valor 
+* eh um ponteiro q aponta para um endereco de memoria
+* trabalhando com o indece e o dado referente ao indice
+* comeca da posicao 0, 1, 2, 3... (4 posicoes)
+* 0 ateh (n-1) -> NOME\0
+``` C
+int vetor[4];
+int vetorNumeros[5]; // nao inicializado
+vetorNumeros[0] = 1;
+
+// acessando o valor do vetor na posicao 0 (posicao 1)
+printf("%d\n", vetorNumeros[0]);
+
+// recebendo um valor para uma posicao especifica do vetor
+printf("Escreva um valor para a posisao 4: ");
+scanf("%d", &vetorNumeros[4]);
+printf("%d\n", vetorNumeros[4]); 
+
+// recebendo todos os valores dentro do vetor
+for (int i = 0; i < 4; i++)
+{
+	printf("Digite um valor: ");
+	scanf("%d", &vetorNumeros[i]);
+}  
+
+// mostrando todos os elementos de um vetor
+printf("Resultados::\n");
+for (int i = 0; i < 4; i++)
+{
+	printf("%d\n", vetorNumeros[i]);
+}
+```
+
+## Define
+> define uma constante como variavel
+```
+#define CONSTANTE 8
+```
+
+## Array de strings (matriz)
+* eh uma tabela, onde cada linha seria um dado
+```C
+char alunos[40][20] = {"maria", "jose", "jimin"};
+printf("%s\n", alunos[0]);
+
+char nomes[3][30];
+for(int i = 0; i < 3; i++)
+{
+	printf("digite o nome dos alunos: ");
+	fgets(nomes[i], 30, stdin);
+}
+
+for(int i = 0; i < 3; i++)
+{
+	printf("Nomes: %s", nomes[i]);
+}
+```

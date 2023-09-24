@@ -39,7 +39,7 @@ int main()
 
   // COMPUTING
   // percentual entre respostas bom e regular
-  diferencaPercentualEntreBonsERegular = (float)((quantidadeDeRegulares - quantidadeDeBons) / ((quantidadeDeBons + quantidadeDeRegulares) / 2)) * 100;
+  diferencaPercentualEntreBonsERegular = (float)((quantidadeDeRegulares - quantidadeDeBons) / quantidadeDeBons) * 100;
 
   // calcular a media de idade de ruins
   for (int i = 0; i < quantidadeEspectadores; i++)
