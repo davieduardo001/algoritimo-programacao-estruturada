@@ -36,7 +36,7 @@ int main()
     } while (aluno[i].nota1 > 10 || aluno[i].nota2 > 10 || aluno[i].nota3 > 10 || aluno[i].nota1 < 0 || aluno[i].nota2 < 0 || aluno[i].nota3 < 0);
 
     // calcula a media do estudante
-    aluno[i].media = ((aluno[i].nota1 * 2) + (aluno[i].nota2 * 4) + (aluno[i].nota3 * 3)) / 10;
+    aluno[i].media = ((aluno[i].nota1 * 2) + (aluno[i].nota2 * 4) + (aluno[i].nota3 * 4)) / 10;
 
     // adiciona a soma para a media geral
     mediaGeral += aluno[i].media;
