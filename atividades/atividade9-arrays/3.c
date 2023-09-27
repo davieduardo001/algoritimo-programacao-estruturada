@@ -4,12 +4,12 @@
 
 int main()
 {
-  int a[MAX];
-  int doubleOfA[MAX];
+  float a[MAX];
+  float doubleOfA[MAX];
 
   printf("Escreva 10 valores: ");
   for (int i = 0; i < MAX; i++)
-    scanf("%i", &a[i]);
+    scanf("%f", &a[i]);
 
   for (int i = 0; i < MAX; i++)
     doubleOfA[i] = a[i] * a[i];
@@ -17,16 +17,16 @@ int main()
   printf("a = { ");
   for (int i = 0; i < MAX; i++)
     if (i != MAX - 1)
-      printf("%i, ", a[i]);
+      printf("%.2f, ", a[i]);
     else
-      printf("%i }\n", a[i]);
+      printf("%.2f }\n", a[i]);
 
   printf("a[i*i] = { ");
   for (int i = 0; i < MAX; i++)
     if (i != MAX - 1)
-      printf("%i, ", doubleOfA[i]);
+      printf("%.2f, ", doubleOfA[i]);
     else
-      printf("%i }\n", doubleOfA[i]);
+      printf("%.2f }\n", doubleOfA[i]);
 
   return 0;
 }
