@@ -19,6 +19,7 @@ int main()
       printf("pode formar um triangulo! (a soma de seus lados eh 180)\n");
     else if (soma < 180)
       printf("a soma dos lados deve ser igual a 180!!\n");
+
   } while (!(soma == 180));
 
   if (a == 90 || b == 90 || c == 90)
