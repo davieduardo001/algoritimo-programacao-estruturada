@@ -30,7 +30,7 @@ int main()
       maior = a[i];
     }
 
-  printf("O maior %i e a posicao que se encontra eh a  %i\n", maior, posicao+1);
+  printf("O maior %i e a posicao que se encontra eh a  %i\n", maior, (posicao+1));
 
   return 0;
 }

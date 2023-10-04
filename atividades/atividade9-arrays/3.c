@@ -11,6 +11,7 @@ int main()
   for (int i = 0; i < MAX; i++)
     scanf("%f", &a[i]);
 
+  // alocando no array vazio
   for (int i = 0; i < MAX; i++)
     doubleOfA[i] = a[i] * a[i];
 
