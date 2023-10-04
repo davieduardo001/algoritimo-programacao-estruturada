@@ -81,7 +81,10 @@ int main()
       numeroRS++;
     }
   }
-  mediaDeAcidentesRS /= numeroRS;
+  if (numeroRS == 0)
+    mediaDeAcidentesRS == 0;
+  else
+    mediaDeAcidentesRS /= numeroRS;
 
   // OUTPUT
   printf("\n\n---------\n");
@@ -104,7 +107,7 @@ int main()
   printf("**Media de veiculos(%.2lf)\n", mediaDeCarros);
 
   printf("\n--A MEDIA DE ACIDENTES DENTRO DO RIO GRANDE DO SUL---------\n");
-  printf("**Media de veiculos(%.2lf)\n", mediaDeAcidentesRS);
+  printf("**Media de acidentes(%.2lf)\n", mediaDeAcidentesRS);
 
   return 0;
 }

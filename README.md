@@ -294,3 +294,7 @@ for(int i = 0; i < 3; i++)
 	printf("Nomes: %s", nomes[i]);
 }
 ```
+
+### Matrizes
+* int matriz[x][y]
+* o primeiro for percorre X e o segundo for percorre o Y
