@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// C = A - B
+
 #define MAX 10
 
 int main ()
@@ -20,8 +22,7 @@ int main ()
     scanf("%i", &B[i]);
   }
 
-  for (int i = 0; i < MAX; i++)
-    C[i] = A[i] - B[i];
+
 
   printf("C = { ");
   for (int i = 0; i < MAX; i++)

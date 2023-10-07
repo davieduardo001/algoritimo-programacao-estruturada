@@ -36,9 +36,11 @@ int main ()
     if (i != MAX - 1)
       printf("%i, ", v[i]);
     else
-      printf("%i }\n", v[i]);
+      printf("%i }", v[i]);
 
-  printf("v: ");
+  printf("\n\n");
+
+  printf("v: \n");
   for (int i = 0; i < MAX; i++)
   {
     printf("%i ", v[i]);
@@ -46,13 +48,19 @@ int main ()
     printf("%i\n", v[i]);
   }
 
-  printf("apenas impares: ");
+  printf("\n\n");
+
+
+  printf("apenas impares: \n");
   for (int i = 0; i < j; i++)
   {
     printf("%i ", apenasImapares[i]);
     i++;
-    printf("%i\n", apenasImapares[i]);
+    if (i + 1 < j)
+      printf("%i\n", apenasImapares[i]);
   }
+
+  printf("\n\n");
   
   return 0;
 }

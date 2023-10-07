@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define MAX 3
+#define MAX 10
 
 int main ()
 {
@@ -26,7 +26,7 @@ int main ()
     printf("%.2f - %.2lf = %.2lf", v[i], media, pow((v[i]-media), 2));
     valorGuardado += pow((v[i]-media), 2);
   }
-  valorGuardado = sqrt((valorGuardado / MAX));
+  valorGuardado = sqrt((valorGuardado / (MAX-1)));
 
   printf("v = { ");
   for (int i = 0; i < MAX; i++)
