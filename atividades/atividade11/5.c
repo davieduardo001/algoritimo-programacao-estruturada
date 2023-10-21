@@ -1,13 +1,19 @@
 #include <stdio.h>
 
+#define PI 3.1414592
+
 float volumeEsfera(float r)
 {
-  return 4/3*3.1414592*(r*r*r);
+  return (4*PI*(r*r*r))/3;
 }
 
 int main()
 {
-  printf("Te volume is: %.2f\n", volumeEsfera(32));
+  float n;
+  printf("raio: ");
+  scanf("%f", &n);
+
+  printf("Numero: %.2f, o volume eh: %.2f\n", n, volumeEsfera(n));
 
   return 0;
 }
