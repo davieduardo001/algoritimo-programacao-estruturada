@@ -2,13 +2,22 @@
 
 float fToC(float F)
 {
-  return (F - 32.0) * (5.0/9.0);
+  return (F - 32.0) * (5.0 / 9.0);
+}
+
+float getF()
+{
+  float temp;
+
+  printf("Escreva uma temp: ");
+  scanf("%f", &temp);
+
+  printf("temperatura %.2fF eh %.2fC\n", temp, fToC(temp));
 }
 
 int main()
 {
-
-  printf("43F eh %.2fC\n", fToC(43));
-
+  getF();
+  
   return 0;
 }
