@@ -40,6 +40,41 @@ void coluna4Coluna10(int row, int col, int matrizInicial[row][col], int matrizFi
 
 void diagonalPrincipalDiagonal(int row, int col, int matrizInicial[row][col], int matrizFinal[row][col])
 {
+  int contadorDiagonalSecundariaCol = MAX-1, contadorDiagonalSecundariaRow = 0;
+  for(int i = 0; i < row; i++)
+  {
+    matrizFinal[i][i] = matrizInicial[contadorDiagonalSecundariaRow][contadorDiagonalSecundariaCol];
+    contadorDiagonalSecundariaCol--;
+    contadorDiagonalSecundariaRow++;
+  }
+
+  contadorDiagonalSecundariaCol = MAX-1;
+  contadorDiagonalSecundariaRow = 0;
+
+  for(int i = 0; i < row; i++)
+  {
+    matrizFinal[contadorDiagonalSecundariaRow][contadorDiagonalSecundariaCol] = matrizInicial[i][i];
+    contadorDiagonalSecundariaCol--;
+    contadorDiagonalSecundariaRow++;
+  }
+}
+
+void linha5Coluna10(int row, int col, int matrizInicial[row][col], int matrizFinal[row][col])
+{
+    printf("IMPRIMINDO LINHA 5 E COLUNA 10\n");
+
+  for(int i = 0; i < row; i++)
+    printf("[%i]\t", matrizInicial[5][i]);
+  printf("\n");
+  for(int i = 0; i < row; i++)
+    printf("[%i]\t", matrizInicial[i][9]);
+  printf("\n");
+
+  for(int i = 0; i < row; i++)
+    matrizFinal[5][i] = matrizInicial[i][9];
+
+  for(int i = 0; i < row; i++)
+    matrizFinal[i][9] = matrizInicial[5][i];
 }
 
 int main()
@@ -54,7 +89,7 @@ int main()
       matriz1[x][y] = i;
     }
   }
-  // gerando matriz final
+  // copiando matriz primaria para a final
   for(int x = 0; x < MAX; x++) {
     for(int y = 0; y < MAX; y++) 
         matrizFinal[x][y] = matriz1[x][y];
@@ -71,13 +106,14 @@ int main()
     printf("\n");
   }
 
-  // output matriz alterada
-  printf("Matriz alterada: \n");
-
   // alterando matriz
   linha2Linha8(MAX, MAX, matriz1, matrizFinal);
   coluna4Coluna10(MAX, MAX, matriz1, matrizFinal);
+  diagonalPrincipalDiagonal(MAX, MAX, matriz1, matrizFinal);
+  linha5Coluna10(MAX, MAX, matriz1, matrizFinal);
 
+  // output matriz alterada
+  printf("Matriz alterada: \n");
   for(int i = 0; i < MAX; i++)
   {
     for(int j = 0; j < MAX; j++)
