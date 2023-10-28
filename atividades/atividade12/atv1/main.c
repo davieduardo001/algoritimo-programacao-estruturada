@@ -36,8 +36,10 @@ int main()
 
     if (!(opcao >= 1 && opcao <= 10))
       printf("Valor nao valido...");
+    if ((opcao >= 3 && opcao <= 10) && (valor <= 100))
+      printf("Valor muito baixo para a quantidade de parcelas... (deve ser ou a vista ou em duas vezes)\n");
 
-  } while (!(opcao >= 1 && opcao <= 10));
+  } while ((!(opcao >= 1 && opcao <= 10)) || ((opcao >= 3 && opcao <= 10) && valor <= 100));
 
   // calculando as prestacoes
   prestacoes = calcularPrestacao(opcao, valor);

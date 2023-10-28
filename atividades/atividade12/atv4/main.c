@@ -46,7 +46,7 @@ int main()
         printf("linha %i: ", i);
         for(int j = 0; j < 10; j++)
         {
-        printf("[%i]\t", matriz1[i][j]);
+            printf("[%i]\t", matriz1[i][j]);
         }
         printf("\n");
     }

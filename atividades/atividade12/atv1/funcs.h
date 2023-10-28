@@ -62,7 +62,10 @@ float calcularPrestacao(int opcao, float valor)
     break;
 
     case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
-      prestacoes = comJurosNaPrestacao(valor, opcao);
+      if (valor <= 100)
+        prestacoes = comJurosNaPrestacao(valor, opcao);
+      else
+        printf("valor nn aplicavel a dividido em 10 vezes\n");
     break;
 
     default:
