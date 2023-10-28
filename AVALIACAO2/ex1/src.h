@@ -8,7 +8,7 @@ int receberQuantidadeVendidos() {
         printf("escreva o numero de contribuicoes do funcionario %i: ", *contribuicaoFuncionarios);
         scanf("%i", &contribuicaoFuncionarios[]);
 
-        
+        //AAAAAAAAAAAAAAAAAAA
     }
 
 
