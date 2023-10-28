@@ -8,7 +8,7 @@ struct cidades
   char estado[3];
   int numeroVeiculos;
   int numeroAcidentes;
-};
+}; 
 
 int main()
 {
