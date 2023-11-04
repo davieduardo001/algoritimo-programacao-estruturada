@@ -11,5 +11,6 @@ int main() {
     receberAssalariado(assalariado);
 
     listaClassificacao(assalariado);
+
     return 0;
 }
