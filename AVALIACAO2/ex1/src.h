@@ -42,21 +42,18 @@ float validaQuantidade(float contribuicoes) {
 }
 
 int receberQuantidadeVendidos(struct funcionario *f) {
-    int i = 0;
-    int count = 1;
-
     while(1) {
         int n = 0;
         int confirmacao;
 
-        f[i].index = i;
+        f[count].index = count;
 
-        printf("Coloque o numero de contribuicoes do funcionario [%i]: ", f[i].index);
+        printf("Coloque o numero de contribuicoes do funcionario [%i]: ", f[count].index);
         scanf("%i", &n);
 
-        f[i].contribuicaoFuncionario = n;
+        f[count].contribuicaoFuncionario = n;
 
-        f[i].salario = validaQuantidade(f[i].contribuicaoFuncionario);
+        f[count].salario = validaQuantidade(f[count].contribuicaoFuncionario);
         
         printf("Deseja adicionar mais um usuario? [1 para adiconar / 0 para sair] ");
         scanf("%i", &confirmacao);
@@ -66,16 +63,16 @@ int receberQuantidadeVendidos(struct funcionario *f) {
         } else {
             break;
         }
-
     }
 
 
 }
 
 void imprimindoFuncionario(struct funcionario *f) {
-    for(int i = 0; i < count; i++) {
+    for(int i = 0; i < (count+1); i++) {
+        printf("Funcionario: %i\n", f[i].index);
         printf("Numero de contribuicoes: %i\n", f[i].contribuicaoFuncionario);
         printf("Salario: %.2f\n", f[i].salario);
-        printf("Index: %i\n", f[i].index);
+        printf("-------------\n");
     }
 }

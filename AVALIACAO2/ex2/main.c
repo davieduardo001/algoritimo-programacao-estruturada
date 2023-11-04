@@ -4,5 +4,4 @@ A classificação em relação ao salário mínimo nacional deverá ser feita pe
 * Você deverá fazer a entrada de dados para todos os assalariados que foram pesquisados pelo ministério, lembrando de fazer sempre a validação de todos os dados informados em sub-algoritmos específicos.   
 Na solução deste problema os resultados finais de cada assalariado que participou desta pesquisa deverão ser apresentados.
 * Após a leitura dos dados de todos os assalariados pesquisados o seu algoritmo deverá apresentar a quantidade de assalariados com salário abaixo do salário mínimo e a quantidade assalariados com salário acima do salário mínimo
-
 */
