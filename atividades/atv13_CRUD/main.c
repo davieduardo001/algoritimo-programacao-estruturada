@@ -11,15 +11,23 @@ User users[MAX];
 
 int main() {
     int count = 0;
-
-    menu();
     
+    int option;
+
+    printf("BEM VINDO AO SISTEMA!\n");
+
     do {
+        menu();
         int option = selectMenuOptions();
+        system("clear");
 
         switch(option) {
             case 1:
-            
+                getUser(users, count);
+            break;
+
+            case 2:
+                createUser(users, count, MAX);
             break;
             
             default:
@@ -29,6 +37,5 @@ int main() {
     } while (option != 0);
 
 
-    getUser(users);
     return 0;
 }

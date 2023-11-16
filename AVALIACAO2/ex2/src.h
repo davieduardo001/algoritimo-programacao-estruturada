@@ -29,7 +29,7 @@ const char* receberSexo(char s) {
 // function that classify the salary of the person
 const char* classificaSalario(float salario) {
     char *classificacao;
-    
+
     if(salario == 1400) {
         classificacao = "igual";
     } else if(salario > 1400) {
