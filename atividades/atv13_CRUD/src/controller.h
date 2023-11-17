@@ -30,10 +30,13 @@ void getUser(User *u, int index) {
             printf("ID: %i\n", u[i].ID);
             printf("NOME: %s\n", u[i].name);
             printf("NOME: %s\n", u[i].email);
-            printf("SEXO: %s\n", u[i].gender);
+            printf("SEXO: %c\n", u[i].gender);
             printf("ENDERECO: %s\n", u[i].address);
             printf("ALTURA: %.2f\n", u[i].height);
-            printf("VACINA: %i\n", u[i].vaccine);
+            if(u[i].vaccine == 1)
+                printf("VACINA: SIM\n");
+            else
+                printf("VACINA: NAO\n");
         }
     }
 }
@@ -71,18 +74,42 @@ void  createUser(User *u, int index, int max) {
         createId(u, index);
         printf("ID gerado: %i\n", u[index].ID);
 
-        printf("Escreva o primeiro nome:");
+        printf("Escreva o nome: ");
         fflush(stdin);
         scanf("%[^\n]s", u[index].name);
-        printf("%s NOMMEEEEE\n",u[index].name);
-        // fgets(u[index].name, sizeof(u[index].name), stdin);
-        // fflush(stdin);
 
         fflush(stdin);
-        printf("Escreva o email:");
+        printf("Escreva o email: ");
         scanf("%[^\n]s", u[index].email);
+        
+        do {
+            fflush(stdin);
+            printf("Escreva o genero [m/f/i] masculino, feminino, indiferente: "); 
+            u[index].gender = getchar();
+        } while(!(u[index].gender == 'f' || u[index].gender == 'm' || u[index].gender == 'i' || u[index].gender == 'M' || u[index].gender == 'F' || u[index].gender == 'I'));
 
-        printf("IMPRIMINDO USERS\n");
+        fflush(stdin);
+        printf("Escreva o endereco: ");
+        scanf("%[^\n]s", u[index].address);
+
+        fflush(stdin);
+        printf("Escreva a sua altura: ");
+        scanf("%f", &u[index].height);
+
+        char verify = 'a';
+        do {
+            fflush(stdin);
+            printf("Voce tomou vacina? [s/n] ");
+            verify = getchar();
+
+            if(verify == 's' || verify == 'S')
+                u[index].vaccine == 1;
+            else if(verify == 'n' || verify == 'N')
+                u[index].vaccine == 0;
+            else
+                printf("favor escrever sim (s) ou nao (n) %c\n", verify);
+        } while(!(verify == 's' || verify == 'S' || verify == 'n' || verify == 'N'));
+
     } else {
         printf("numero maximo de usuarios atingidos\n");
     }

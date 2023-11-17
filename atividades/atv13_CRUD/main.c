@@ -17,6 +17,7 @@ int main() {
     printf("BEM VINDO AO SISTEMA!\n");
 
     do {
+        printf("\n");
         menu();
         int option = selectMenuOptions();
         system("cls");
