@@ -13,6 +13,7 @@ int main() {
     int count = 0;
     
     int option;
+    int confirmation;
 
     system("cls");
     printf("BEM VINDO AO SISTEMA!\n");
@@ -45,6 +46,16 @@ int main() {
             // edit user
             case 4:
                 editUser(users, count);
+            break;
+
+            case 5:
+                confirmation = deleteUser(users, count);
+                if(confirmation == 1) {
+                    printf("USUARIO EXLUIDO!\n");
+                    count--;
+                } else {
+                    printf("O utilimo usuario nao foi excluido!\n");
+                }
             break;
 
             // exit

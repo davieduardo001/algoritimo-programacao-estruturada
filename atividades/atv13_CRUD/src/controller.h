@@ -254,3 +254,19 @@ void editUser(User *u, int index) {
             printf("email nn encontrado!\n");
     }
 }
+
+int deleteUser(User *u, int index) {
+    if(index == 0) {
+        printf("sem usuarios cadastrados!!\n");
+    } else {
+        char confirmation = 'N';
+        printf("deseja excluir o ultimo usuario adicionado? [s/N]\n");
+        confirmation = getchar();
+
+        if(confirmation == 'S' || confirmation == 's') {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
