@@ -20,6 +20,7 @@ int selectMenuOptions() {
     return option;
 }
 
+// list the users
 void getUser(User *u, int index) {
 
     if(index == 0) {
@@ -42,6 +43,7 @@ void getUser(User *u, int index) {
 
 }
 
+// search for a user
 void searchUser(User *u, int index) {
     char exampleEmail[50];
     int founded = 0;
@@ -70,8 +72,6 @@ void searchUser(User *u, int index) {
         if(founded != 1)
             printf("email nn encontrado!\n");
     }
-
-
 }
 
 int createId(User *u, int index) {
@@ -162,10 +162,95 @@ void  createUser(User *u, int index, int max) {
 
 }
 
-void editUser() {
-    // edit user
-}
+void editUser(User *u, int index) {
+    char exampleEmail[50];
+    int founded = 0;
+    int indexOfTheUserThatUSearched = 0;
 
-void filterUser() {
-    // by email
+    if(index == 0) {
+        printf("sem usuarios cadastrados!!\n");
+    } else {
+        printf("escreva o email do usuario que deseja EDITAR: ");
+        scanf("%[^\n]s", exampleEmail);
+
+        for(int i = 0; i < index; i++){
+            if(!(strcmp(u[i].email, exampleEmail))) {
+                printf("EMAIL ENCONTRADO!\n");
+                printf("\n----------");
+                printf("ID: %i\n", u[i].ID);
+                printf("NOME: %s\n", u[i].name);
+                printf("NOME: %s\n", u[i].email);
+                printf("SEXO: %s\n", u[i].gender);
+                printf("ENDERECO: %s\n", u[i].address);
+                printf("ALTURA: %.2f\n", u[i].height);
+                founded = 1;
+                indexOfTheUserThatUSearched = i;
+
+                printf("EDITING...\n");
+                // EDITING
+
+                printf("Escreva o nome: ");
+                fflush(stdin);
+                scanf("%[^\n]s", u[indexOfTheUserThatUSearched].name);
+
+                do {
+                    fflush(stdin);
+                    printf("Escreva o email: ");
+                    scanf("%[^\n]s", u[indexOfTheUserThatUSearched].email);
+                    
+                    if(strstr(u[indexOfTheUserThatUSearched].email, "@") == NULL)
+                        printf("escreva um email valido!\n");
+                } while(strstr(u[indexOfTheUserThatUSearched].email, "@") == NULL);
+
+                
+                int v = 0;
+                do {
+                    fflush(stdin);
+                    printf("Escreva o genero (feminino, masculino, indiferente): "); 
+                    scanf("%[^\n]s", u[indexOfTheUserThatUSearched].gender);
+
+                    if(!(strcmp(u[indexOfTheUserThatUSearched].gender, "feminino")))
+                        v = 1;
+                    else if(!(strcmp(u[indexOfTheUserThatUSearched].gender, "masculino")))
+                        v = 1;
+                    else if(!(strcmp(u[indexOfTheUserThatUSearched].gender, "indiferente")))
+                        v = 1;
+                    else 
+                        printf("escreva um sexo valido! (feminino, masculino, indiferente)\n");
+                } while(v != 1);
+
+                fflush(stdin);
+                printf("Escreva o endereco: ");
+                scanf("%[^\n]s", u[indexOfTheUserThatUSearched].address);
+
+                do {
+                    fflush(stdin);
+                    printf("Escreva a sua altura: ");
+                    scanf("%f", &u[indexOfTheUserThatUSearched].height);
+
+                    if(!(u[indexOfTheUserThatUSearched].height >= 1 && u[indexOfTheUserThatUSearched].height <= 2))
+                        printf("altura invalida\n");
+                } while(!(u[indexOfTheUserThatUSearched].height >= 1 && u[indexOfTheUserThatUSearched].height <= 2));
+
+                char verify = 'a';
+                do {
+                    fflush(stdin);
+                    printf("Voce tomou vacina? [s/n] ");
+                    verify = getchar();
+
+                    if(verify == 's' || verify == 'S')
+                        u[indexOfTheUserThatUSearched].vaccine == 1;
+                    else if(verify == 'n' || verify == 'N')
+                        u[indexOfTheUserThatUSearched].vaccine == 0;
+                    else
+                        printf("favor escrever sim (s) ou nao (n) %c\n", verify);
+                } while(!(verify == 's' || verify == 'S' || verify == 'n' || verify == 'N'));
+
+                break;
+            }
+        }
+
+        if(founded != 1)
+            printf("email nn encontrado!\n");
+    }
 }

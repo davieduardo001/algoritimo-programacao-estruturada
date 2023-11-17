@@ -42,6 +42,11 @@ int main() {
                 searchUser(users, count);
             break;
 
+            // edit user
+            case 4:
+                editUser(users, count);
+            break;
+
             // exit
             case 0:
                 printf("saindo do programa!\n");
