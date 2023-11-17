@@ -3,7 +3,7 @@ typedef struct {
     int ID;
     char email[50];
     char name[50];
-    char gender;
+    char gender[50];
     char address[70];
     float height;
     int vaccine;
@@ -30,7 +30,7 @@ void getUser(User *u, int index) {
             printf("ID: %i\n", u[i].ID);
             printf("NOME: %s\n", u[i].name);
             printf("NOME: %s\n", u[i].email);
-            printf("SEXO: %c\n", u[i].gender);
+            printf("SEXO: %s\n", u[i].gender);
             printf("ENDERECO: %s\n", u[i].address);
             printf("ALTURA: %.2f\n", u[i].height);
             if(u[i].vaccine == 1)
@@ -43,10 +43,6 @@ void getUser(User *u, int index) {
 
 void searchUser() {
     // search for a user
-}
-
-void listUser() {
-    // exlude user
 }
 
 int createId(User *u, int index) {
@@ -78,23 +74,44 @@ void  createUser(User *u, int index, int max) {
         fflush(stdin);
         scanf("%[^\n]s", u[index].name);
 
-        fflush(stdin);
-        printf("Escreva o email: ");
-        scanf("%[^\n]s", u[index].email);
-        
         do {
             fflush(stdin);
-            printf("Escreva o genero [m/f/i] masculino, feminino, indiferente: "); 
-            u[index].gender = getchar();
-        } while(!(u[index].gender == 'f' || u[index].gender == 'm' || u[index].gender == 'i' || u[index].gender == 'M' || u[index].gender == 'F' || u[index].gender == 'I'));
+            printf("Escreva o email: ");
+            scanf("%[^\n]s", u[index].email);
+            
+            if(strstr(u[index].email, "@") == NULL)
+                printf("escreva um email valido!\n");
+        } while(strstr(u[index].email, "@") == NULL);
+
+        
+        int v = 0;
+        do {
+            fflush(stdin);
+            printf("Escreva o genero (feminino, masculino, indiferente): "); 
+            scanf("%[^\n]s", u[index].gender);
+
+            if(!(strcmp(u[index].gender, "feminino")))
+                v = 1;
+            else if(!(strcmp(u[index].gender, "masculino")))
+                v = 1;
+            else if(!(strcmp(u[index].gender, "indiferente")))
+                v = 1;
+            else 
+                printf("escreva um sexo valido! (feminino, masculino, indiferente)\n");
+        } while(v != 1);
 
         fflush(stdin);
         printf("Escreva o endereco: ");
         scanf("%[^\n]s", u[index].address);
 
-        fflush(stdin);
-        printf("Escreva a sua altura: ");
-        scanf("%f", &u[index].height);
+        do {
+            fflush(stdin);
+            printf("Escreva a sua altura: ");
+            scanf("%f", &u[index].height);
+
+            if(!(u[index].height >= 1 && u[index].height <= 2))
+                printf("altura invalida\n");
+        } while(!(u[index].height >= 1 && u[index].height <= 2));
 
         char verify = 'a';
         do {
