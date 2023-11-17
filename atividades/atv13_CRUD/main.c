@@ -22,10 +22,13 @@ int main() {
         system("clear");
 
         switch(option) {
+
+            //list
             case 1:
                 getUser(users, count);
             break;
 
+            //create
             case 2:
                 createUser(users, count, MAX);
             break;

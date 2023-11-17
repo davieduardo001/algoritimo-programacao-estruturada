@@ -16,6 +16,7 @@ int selectMenuOptions() {
     int option;
     printf("Selecione uma opcao: ");
     scanf("%i", &option);
+    fflush(stdin);
     return option;
 }
 
@@ -69,8 +70,11 @@ void createUser(User *u, int index, int max) {
         createId(u, index);
 
         printf("Escreva o primeiro nome:");
-        fgets(u[index].name, sizeof(u[index].name), stdin);
+        fflush(stdin);
+        scanf("%[^\n]s", u[index].name);
+        // fgets(u[index].name, sizeof(u[index].name), stdin);
         // fflush(stdin);
+        fflush(stdin);
 
         printf("Escreva o email:");
         scanf("%s", u[index].email);
