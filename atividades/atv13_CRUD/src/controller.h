@@ -22,17 +22,20 @@ int selectMenuOptions() {
 
 void getUser(User *u, int index) {
 
-    for(int i; i < index; i++) {
-        printf("ID: %s", u[i].ID);
-        printf("NOME: %s", u[i].name);
-        printf("NOME: %s", u[i].email);
-        printf("SEXO: %s", u[i].gender);
-        printf("ENDERECO: %s", u[i].address);
-        printf("ALTURA: %.2f", u[i].height);
-        printf("VACINA: %i", u[i].vaccine);
+    if(index == 0) {
+        printf("sem usuarios cadastrados!!\n");
+    } else {
+        for(int i = 0; i < index; i++) {
+            printf("----------");
+            printf("ID: %i\n", u[i].ID);
+            printf("NOME: %s\n", u[i].name);
+            printf("NOME: %s\n", u[i].email);
+            printf("SEXO: %s\n", u[i].gender);
+            printf("ENDERECO: %s\n", u[i].address);
+            printf("ALTURA: %.2f\n", u[i].height);
+            printf("VACINA: %i\n", u[i].vaccine);
+        }
     }
-    
-    printf("test: %c", u[0].gender);
 }
 
 void searchUser() {
@@ -61,26 +64,25 @@ int createId(User *u, int index) {
 }
 
 //create user
-void createUser(User *u, int index, int max) {
+void  createUser(User *u, int index, int max) {
     // create a user
     if(index != max) { 
-        index++;
-        
         // verify ID
         createId(u, index);
+        printf("ID gerado: %i\n", u[index].ID);
 
         printf("Escreva o primeiro nome:");
         fflush(stdin);
         scanf("%[^\n]s", u[index].name);
+        printf("%s NOMMEEEEE\n",u[index].name);
         // fgets(u[index].name, sizeof(u[index].name), stdin);
         // fflush(stdin);
+
         fflush(stdin);
-
         printf("Escreva o email:");
-        scanf("%s", u[index].email);
+        scanf("%[^\n]s", u[index].email);
 
-
-
+        printf("IMPRIMINDO USERS\n");
     } else {
         printf("numero maximo de usuarios atingidos\n");
     }

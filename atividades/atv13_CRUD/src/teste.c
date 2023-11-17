@@ -38,7 +38,7 @@ void imprimir(Aluno a[], int totalCadastro){
         }
     }
 }
-void buscarRegistro(Aluno a[], int totalCadastro, int buscarId){
+void buscarRegistro(Aluno a[], int *totalCadastro, int buscarId){
     if(totalCadastro == 0){
         printf("\nNao existe cadastros na lista\n");
         return;

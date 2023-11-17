@@ -19,7 +19,7 @@ int main() {
     do {
         menu();
         int option = selectMenuOptions();
-        system("clear");
+        system("cls");
 
         switch(option) {
 
@@ -31,6 +31,13 @@ int main() {
             //create
             case 2:
                 createUser(users, count, MAX);
+                count++;
+            break;
+
+            // exit
+            case 0:
+                printf("saindo do programa!\n");
+                return 0;
             break;
             
             default:
