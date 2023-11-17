@@ -13,12 +13,13 @@ int main() {
     int count = 0;
     
     int option;
-    
+
     system("cls");
     printf("BEM VINDO AO SISTEMA!\n");
 
     do {
         printf("\n");
+        printf("\n-------MENU\n");
         menu();
         int option = selectMenuOptions();
         system("cls");
@@ -34,6 +35,11 @@ int main() {
             case 2:
                 createUser(users, count, MAX);
                 count++;
+            break;
+
+            // search for email
+            case 3:
+                searchUser(users, count);
             break;
 
             // exit

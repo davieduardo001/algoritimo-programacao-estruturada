@@ -40,11 +40,38 @@ void getUser(User *u, int index) {
         }
     }
 
-    printf("\n-------MENU\n");
 }
 
 void searchUser(User *u, int index) {
-    
+    char exampleEmail[50];
+    int founded = 0;
+
+    if(index == 0) {
+        printf("sem usuarios cadastrados!!\n");
+    } else {
+        printf("escreva o email do usuario que deseja buscar: ");
+        scanf("%[^\n]s", exampleEmail);
+
+        for(int i = 0; i < index; i++){
+            if(!(strcmp(u[i].email, exampleEmail))) {
+                printf("EMAIL ENCONTRADO!\n");
+                printf("\n----------");
+                printf("ID: %i\n", u[i].ID);
+                printf("NOME: %s\n", u[i].name);
+                printf("NOME: %s\n", u[i].email);
+                printf("SEXO: %s\n", u[i].gender);
+                printf("ENDERECO: %s\n", u[i].address);
+                printf("ALTURA: %.2f\n", u[i].height);
+                founded = 1;
+                break;
+            }
+        }
+
+        if(founded != 1)
+            printf("email nn encontrado!\n");
+    }
+
+
 }
 
 int createId(User *u, int index) {
