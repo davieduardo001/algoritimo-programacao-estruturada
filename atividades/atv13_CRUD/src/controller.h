@@ -26,7 +26,7 @@ void getUser(User *u, int index) {
         printf("sem usuarios cadastrados!!\n");
     } else {
         for(int i = 0; i < index; i++) {
-            printf("----------");
+            printf("\n----------");
             printf("ID: %i\n", u[i].ID);
             printf("NOME: %s\n", u[i].name);
             printf("NOME: %s\n", u[i].email);
@@ -39,10 +39,12 @@ void getUser(User *u, int index) {
                 printf("VACINA: NAO\n");
         }
     }
+
+    printf("\n-------MENU\n");
 }
 
-void searchUser() {
-    // search for a user
+void searchUser(User *u, int index) {
+    
 }
 
 int createId(User *u, int index) {

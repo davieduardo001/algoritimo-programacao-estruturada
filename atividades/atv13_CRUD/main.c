@@ -13,7 +13,8 @@ int main() {
     int count = 0;
     
     int option;
-
+    
+    system("cls");
     printf("BEM VINDO AO SISTEMA!\n");
 
     do {
