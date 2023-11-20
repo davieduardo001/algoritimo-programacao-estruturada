@@ -12,6 +12,9 @@ int main() {
 
     menu();
     createProduct(p);
-    printf("%s", "\U0001f600"); // :-)
+
+    printf("HEELLO FROM HEREEEE <3\n");
+
+    printf("THE EMOGI DONT WORK HERE ;-;");
     return 0;
 }
