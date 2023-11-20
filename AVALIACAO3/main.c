@@ -13,8 +13,6 @@ int main() {
     menu();
     createProduct(p);
 
-    printf("HEELLO FROM HEREEEE <3\n");
 
-    printf("THE EMOGI DONT WORK HERE ;-;");
     return 0;
 }
