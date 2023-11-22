@@ -15,7 +15,7 @@ int main() {
     createProduct(p);
     initApp();
 
-    createCodeForTheProduct();
+    createCodeForTheProduto();
 
     return 0;
 }
