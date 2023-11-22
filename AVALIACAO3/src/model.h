@@ -4,5 +4,3 @@ typedef struct {
     int quantity;
     float value;
 } Product;
-
-

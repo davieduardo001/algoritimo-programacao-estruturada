@@ -4,6 +4,10 @@ int createProduct(Product *p) {
     return 0;
 }
 
+int createCodeForTheProduct() {
+    printf("returning from here\n");
+    return 0;
+}
 int readProduct() {
     return 0;
 }

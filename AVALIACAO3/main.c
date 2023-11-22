@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <unistd.h>
 
 #include "./src/model.h"
 #include "./src/controller.h"
@@ -12,7 +13,9 @@ int main() {
 
     menu();
     createProduct(p);
+    initApp();
 
+    createCodeForTheProduct();
 
     return 0;
 }
