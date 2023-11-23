@@ -4,6 +4,7 @@ int menu() {
 }
 
 int initApp() {
+    // font used modular
     sleep(1);
     system("clear");
     puts(
@@ -15,7 +16,7 @@ int initApp() {
     system("clear");
     printf("");
 
-     sleep(1);
+    sleep(1);
     system("clear");
     puts(
             " ________ _______ _____   _____   ______ _______ _______ _______\n"

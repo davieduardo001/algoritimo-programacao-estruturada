@@ -1,21 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include <unistd.h>
+#include<unistd.h>
+#include<string.h>
 
 #include "./src/model.h"
 #include "./src/controller.h"
 #include "./src/view.h"
 
-Product p[100];
+//Product *p;
 
 int main() {
 
 
     menu();
-    createProduct(p);
-    initApp();
 
-    createCodeForTheProduct();
+    initApp();
 
     return 0;
 }
