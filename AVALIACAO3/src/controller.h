@@ -8,11 +8,36 @@
 //Product *baseProduct;
 //baseProduct = (Product*)malloc(sizeof(baseProduct));
 
+
+int createId(Product *p, int *index) {
+    // create a ID
+    int validate;
+    do {
+        validate = 1;
+
+        p[index].code = rand() % 100;
+
+        for(int i = 0; i < index-1; i++) {
+            if( (p[index].code) == (p[i].code) ) {
+                validate = 0;
+            }
+        }
+    } while(validate == 0);
+
+    return p[index].code;
+}
+
+int addToTheProductIndex(int *index) {
+    *index = *index + 1; 
+
+    return 0;
+}
+
 Product *putProduct() {
     Product *p = (Product*)malloc(sizeof(p));
 
     p->code = 213;
-    printf("PRDUTO CODIGO: %d\n", p->code);
+    printf("PRODUTO CODIGO: %d\n", p->code);
 
     printf("Escreva a descricao do produto: ");
     fgets(p->descricao, sizeof(p->descricao), stdin);
@@ -23,7 +48,7 @@ Product *putProduct() {
     fflush(stdin);
 
     printf("Escreva o valor deste produto: ");
-    scanf("%d", &p->value);
+    scanf("%f", &p->value);
     fflush(stdin);
 
     return p;
