@@ -24,16 +24,19 @@ int main() {
 
     menu();
 
-    initApp();
+    //initApp();
 
-    p = putProduct();
+//    p = putProduct(i);
+//    printf("code: %d\n", p->code);
+//    printf("description: %s\n", p->descricao);
+//    printf("quantity: %i\n", p->quantity);
+//    printf("value: %.2f\n", p->value);
+//    addToTheProductIndex(&i);
 
-    printf("code: %d\n", p->code);
-    printf("description: %s\n", p->descricao);
-    printf("quantity: %i\n", p->quantity);
-    printf("value: %.2f\n", p->value);
-
-    addToTheProductIndex(&i);
+    createProduct(p, &i);
+    printf("RETUNED TO MAIN\n");
+    int code = p[0].code;
+    printf("CODE:: %i\n", code );
 
     return 0;
 }
