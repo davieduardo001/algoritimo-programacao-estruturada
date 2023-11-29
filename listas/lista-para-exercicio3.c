@@ -38,9 +38,9 @@ Pessoa* cadastrar(Pessoa *lista){
     fflush(stdin);
     scanf("%d", &novaPessoa ->idade);
 
-    if (lista == NULL){
+    if(lista == NULL) {
         return novaPessoa;
-    }else{
+    } else {
         Pessoa* atual = lista;
         while(atual->prox != NULL){
             atual = atual->prox;
