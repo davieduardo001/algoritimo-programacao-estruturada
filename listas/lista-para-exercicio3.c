@@ -1,177 +1,167 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-
-// apontamentos para endereços de memoria, estrutura de dados mais genérica
-// o algoritmo n tem limitacao de escopo so de hardware em estrutura de dados
-
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
 typedef struct Pessoa{
-    int id;
-    char nome[30];
+    char nome[50];
     int idade;
-    struct Pessoa *prox; // colocar o nome dela (Pessoa) TBM no inicio quando tiver struct aqui com ponteiro
+    int id;
+    struct Pessoa *prox;//ponteiro que armazena o endereco do proxima pessoa
 }Pessoa;
 
 Pessoa* criarListaVazia(){
     return NULL;
 }
 
+//funcao para criar um novo registro
 Pessoa* criarPessoa(){
-    // cria um endereço de mem. aleatorio
     Pessoa *novaPessoa = (Pessoa*)malloc(sizeof(Pessoa));
-
-    // verificação se consege alocar um endereco
-    if (novaPessoa == NULL){
+    if(novaPessoa == NULL){
         printf("Erro de alocacao de memoria");
-        exit(EXIT_FAILURE); //sai do programa
+        exit(EXIT_FAILURE);
     }
-
-    //a nova pessoa vai receber o ponteiro do proximo como nulo
-    //deixando assim a referencia do proximo nulo (por enquanto)
     novaPessoa->prox = NULL;
     return novaPessoa;
-} 
-
+}
 Pessoa* cadastrar(Pessoa *lista){
-    Pessoa *novaPessoa = criarPessoa();
     srand(time(NULL));
+    Pessoa *novaPessoa = criarPessoa();
     novaPessoa->id = rand() % 100;
     printf("Digite o nome: ");
     fflush(stdin);
     fgets(novaPessoa->nome, sizeof(novaPessoa->nome), stdin);
     printf("Digite a idade: ");
-    fflush(stdin);
     scanf("%d", &novaPessoa->idade);
-
-    if(lista == NULL) {
+    //verificar se a lista é nula
+    if(lista == NULL){
         return novaPessoa;
-    } else {
-        Pessoa* atual = lista;
-        while(atual->prox != NULL) {
+    }else{
+        Pessoa *atual = lista;
+        while(atual->prox != NULL){
             atual = atual->prox;
+            //sai da repeticao quanto encontrar o elemento que aponta pra NULL
         }
         atual->prox = novaPessoa;
-        return lista;
+        return lista;//atualizar a lista 
     }
 }
-
-void mostrarLista(Pessoa *lista){
-    Pessoa *atual = lista;
-    if (atual == NULL){
-        printf("lista vazia");
-        return;
-    }else{
-        while (atual != NULL){
-            printf("\nNome: %s", atual->nome);
-            printf("\nID: %d", atual->id);
-            printf("\nIdade: %d", atual->idade);
-            printf("\n");
-            atual = atual->prox;
+ void mostrarLista(Pessoa *lista){
+        Pessoa *atual = lista;
+        if(lista == NULL){
+            printf("\nLista nula\n");
+            return;
         }
-        
-    }
-}
-
-Pessoa *buscar(Pessoa *lista, int idBusca) {
-    Pessoa *atual = lista;
-
-    if(atual == NULL) {
-        printf("lista vazia");
-        return NULL;
-    } else {
-        while(atual != NULL) {
-            if(idBusca == atual->id) {
+        else{
+            while(atual != NULL){
                 printf("\nNome: %s", atual->nome);
+                printf("Idade: %d", atual->idade);
                 printf("\nID: %d", atual->id);
-                printf("\nIdade: %d", atual->idade);
                 printf("\n");
+                atual = atual->prox;
+            }
+        }
+ }
+ Pessoa* buscarPessoa(Pessoa *lista, int idBusca){
+    Pessoa *atual = lista;
+        while(atual != NULL){
+            if(atual->id == idBusca){
+                printf("\nNome: %s", atual->nome);
+                printf("Idade: %d", atual->idade);
+                printf("\nID: %d", atual->id);
                 return atual;
             }
             atual = atual->prox;
         }
-        printf("pessoa nn encontrada!\n");
-        return NULL;
-    }
+    printf("Pessoa nao encontrada");
+    return NULL;
+ }
+
+void alterar(Pessoa *pessoa){
+    printf("Digite o novo nome");
+    fflush(stdin);
+    fgets(pessoa->nome, sizeof(pessoa->nome), stdin);
+    fflush(stdin);
+    printf("Digite a nova idade");
+    fflush(stdin);
+    scanf("%d", &pessoa->idade);
 }
 
-void alterar(Pessoa *encontrada) {
-    printf("Digite o nome: ");
-    fflush(stdin);
-    fgets(encontrada->nome, sizeof(encontrada->nome), stdin);
-    printf("Digite a idade: ");
-    fflush(stdin);
-    scanf("%d", &encontrada->idade);
-}
+Pessoa* excluir(Pessoa *lista, int idBusca){
+    Pessoa *atual = lista;
+    Pessoa *anterior = NULL;
 
-Pessoa *exluir(Pessoa *lista, int idBusca) {
-    pessoa *atual = lista;
-    Pessoa anterior = NULL;
-
-    //percorer a lista que iremos exluir
-    while(atual != NULL && atual->id != idBusca) {
-        // a ordem IMPORTA
-        anterior = atual;
+    while(atual != NULL && atual->id != idBusca){
+    	anterior = atual;//atencao, aqui a ordem de declaracao importa (esse era nosso problema na exclusao)
         atual = atual->prox;
+        
     }
-
-    if(atual != NULL) {
-        if(anterior != NULL) {
-            //excluir alguem depois do primeiro da lista
-            anterior->prox = autal->prox;
-        } else {
+    if(atual != NULL){
+        if(anterior != NULL){
+            //exclusão alguem depois da maria
+            anterior->prox = atual->prox;
+        }else{
+            //excluir a maria (primeiro da lista)
             lista = atual->prox;
         }
         free(atual);
-        printf("pessoa ecluida com sucesso\n");
-    } else {
-        //exluir o primeiro da lista
-        printf("pessoa nao encontrada\n");
+        printf("Removido com sucesso");
+    }else{
+        printf("Pessoa nao encontrada");
     }
-    
     return lista;
 }
 
-int main (){
-    Pessoa *lista = criarListaVazia();
-    int opcao, idBuscado;
-    Pessoa *encontrada;
+void liberarLista(Pessoa *lista){
+    Pessoa *atual = lista;
+    Pessoa *prox;
+    while(atual != NULL){
+        prox = atual->prox;
+        free(atual);
+        atual = prox;
+    }
+}
 
-    do {
-        printf("\n1 - Cadastrar");
-        printf("\n2 - Mostrar");
-        printf("\n3 - Buscar um registro");
-        printf("\n4 - Alterar registro");
-        printf("\n5 - Excluir um registro");
-        printf("\n0 - Sair do registro\n");
-        printf("Digite uma opcao: ");
-        scanf ("%d", &opcao);
-
+int main(){
+    int opcao;
+    int idBusca;
+    Pessoa *encontrada;//armazenar a pessoa encontrada para excluir ou alterar
+    Pessoa *lista = criarListaVazia();//sempre vai ser o primeiro da lista
+    do{
+        printf("\nDigite 1 para cadastrar");
+        printf("\nDigite 2 para mostrar");
+        printf("\nDigite 3 para buscar");
+        printf("\nDigite 4 para alterar");
+        printf("\nDigite 5 para excluir");
+        printf("\nDigite 0 para sair");
+        scanf("%d", &opcao);
         switch(opcao){
             case 1:
                 lista = cadastrar(lista);
-                break;
+            break;
             case 2:
                 mostrarLista(lista);
-                break; 
+            break;
             case 3:
-                printf("digite o ID de busca: ");
-                scanf("%d", &idBuscado);
-                encontrada = buscar(lista, idBuscado);
-                break;
+                printf("Digite o id para busca");
+                scanf("%d", &idBusca);
+                encontrada = buscarPessoa(lista, idBusca);
+            break;
             case 4:
-                printf("digite o ID para buscar os dados: ");
-                scanf("%d", &idBuscado);
-                encontrada = buscar(lista, idBuscado);
-                if(encontrada != NULL)
+                printf("\nDigite o id para alteracao");
+                scanf("%d", &idBusca);
+                encontrada = buscarPessoa(lista, idBusca);
+                if(encontrada != NULL){
                     alterar(encontrada);
-                break;
+                }
+            break;
             case 5:
-                printf("digite o id para excluir: ");
-                scanf("%d", &idBuscado);
-                lista = exluir(lista, idBusca);
-                break;
+                printf("\nDigite o id para exclusao");
+                scanf("%d", &idBusca);
+                lista = excluir(lista, idBusca);
+            break;
         }
-    } while (opcao != 0);
+    }while(opcao != 0);
 
+    liberarLista(lista);
+
+    return 0;
 }
