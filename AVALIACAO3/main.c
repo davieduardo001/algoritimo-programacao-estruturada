@@ -24,6 +24,7 @@ int main() {
     int option;
 
     menu();
+    initApp();
 
 
     return 0;
