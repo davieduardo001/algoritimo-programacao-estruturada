@@ -1,8 +1,53 @@
 int menu() {
-    printf("--BEM VINDO AO ESTOCAS--\n");
+    int option;
 
-    printf("");
-    return 0;
+    printf("\n\n--BEM VINDO AO ESTOCAS--\n");
+
+    printf("1 - Criar\n");
+    printf("2 - Listar\n");
+    printf("3 - Pesquisar\n");
+    printf("4 - Remover\n");
+    printf("0 - sair do programa\n");
+
+    printf("escolha uma das opcoes: ");
+    scanf("%d", &option);
+
+    return option;
+}
+
+void handleWithFunctions(int option) {
+    switch(option) {
+        case 1:
+            system("cls");
+            
+            break;
+        case 2:
+            system("cls");
+
+            break;
+        case 3:
+            system("cls");
+
+            break;
+        case 4:
+            system("cls");
+
+            break;
+        case 0:
+            system("cls");
+
+            printf("saindo do programa.");
+            sleep(1);
+            printf(".");
+            sleep(1);
+            printf(".");
+            sleep(1);
+            break;
+        default:
+            system("cls");
+
+            printf("Opcao nao disponivel!!\n");
+    }
 }
 
 int initApp() {

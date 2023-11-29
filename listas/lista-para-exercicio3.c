@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
 typedef struct Pessoa{
     char nome[50];
     int idade;
@@ -44,13 +45,13 @@ Pessoa* cadastrar(Pessoa *lista){
         return lista;//atualizar a lista 
     }
 }
- void mostrarLista(Pessoa *lista){
+ void mostrarLista(Pessoa *lista) {
         Pessoa *atual = lista;
-        if(lista == NULL){
+        if(lista == NULL) {
             printf("\nLista nula\n");
             return;
         }
-        else{
+        else {
             while(atual != NULL){
                 printf("\nNome: %s", atual->nome);
                 printf("Idade: %d", atual->idade);

@@ -23,8 +23,11 @@ int main() {
     Product *list = createVoidList();
     int option;
 
-    menu();
     initApp();
+    while(option != 0) {
+        option = menu();
+        handleWithFunctions(option);
+    }
 
 
     return 0;
