@@ -36,7 +36,7 @@ Pessoa* cadastrar(Pessoa *lista){
     fgets(novaPessoa->nome, sizeof(novaPessoa->nome), stdin);
     printf("Digite a idade: ");
     fflush(stdin);
-    scanf("%d", &novaPessoa ->idade);
+    scanf("%d", &novaPessoa->idade);
 
     if(lista == NULL) {
         return novaPessoa;
