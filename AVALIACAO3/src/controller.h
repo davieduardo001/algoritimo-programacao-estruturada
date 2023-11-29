@@ -8,6 +8,7 @@
 //Product *baseProduct;
 //baseProduct = (Product*)malloc(sizeof(baseProduct));
 
+Pessoa *createVoidList() {}
 
 int createId(Product *p, int index) {
     // create a ID
