@@ -20,10 +20,7 @@ void handleWithFunctions(int option, Product *list) {
     switch(option) {
         case 1:
             system("cls");
-            printf("entou nasldkfjlsd\n");
             list = createProduct(list);
-            printf("saiuuu daquiiii\n");
-            printf("list code is: %i\n", list->code);
             break;
         case 2:
             system("cls");

@@ -32,8 +32,6 @@ int createId(Product *list, Product *newProduct) {
 Product *createProduct(Product *list) {
     Product *newProduct = (Product*)malloc(sizeof(Product));
 
-                printf("entou AQUIII\n");
-
     if(newProduct == NULL) {
         printf("erro ao alocar mem.\n");
         exit(EXIT_FAILURE);
@@ -41,7 +39,7 @@ Product *createProduct(Product *list) {
 
     newProduct->code = createId(list, newProduct);
 
-    printf("PRODUTO N* %i\n", newProduct->code);
+    printf("CODIGO: %i\n", newProduct->code);
 
     printf("Digite a descricao do produto: ");
     fflush(stdin);
@@ -56,6 +54,12 @@ Product *createProduct(Product *list) {
     scanf("%f", &newProduct->value);
 
     newProduct->next = NULL;
+
+    system("cls");
+    printf("--CRIADO--\n\n");
+    printf("------\n");
+    printf("CODIGO N: %i\n\n* quantidade: %i, valor: %.2f\n\n", newProduct->code, newProduct->quantity, newProduct->value);
+    printf("* descricao: %s\n", newProduct->descricao);
 
     return newProduct;
 }
@@ -75,10 +79,8 @@ Product *putProduct(Product *list) {
 
         //this will set the last position *next pointer to the newProduct pointer;
         current->next = newProduct;
-
         return list;
     }
-
 }
 
 
