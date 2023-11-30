@@ -101,6 +101,35 @@ void readProduct(Product *list) {
     }
 }
 
+Product *searchProduct(Product *list) {
+    Product *current = list;
+    int code;
+
+    if(list == NULL) {
+        printf("nao a conteudo produtos adicionados!\n");
+    } else {
+
+        printf("Escreva o codigo para pesquisar: ");
+        scanf("%i", &code);
+
+        while(current != NULL) {
+            if(current->code == code) {
+                printf("--ENCONTRADO--\n\n");
+
+                printf("-------------------------------------\n");
+                printf("CODIGO N: %i\n\n---quantidade: %i\n\n---valor: R$%.2f\n\n", current->code, current->quantity, current->value);
+                printf("---descricao: %s\n", current->descricao);
+
+                return current;
+            }
+            current = current->next;
+        }
+
+        printf("produto nao encontrado!\n");
+        return NULL;
+    }
+}
+
 int updateProduct() {
     return 0;
 }

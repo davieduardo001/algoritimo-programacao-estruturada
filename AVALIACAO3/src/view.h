@@ -17,6 +17,8 @@ int menu() {
 }
 
 Product *handleWithFunctions(int option, Product *list) {
+    Product *founded = NULL;
+
     switch(option) {
         case 1:
             system("cls");
@@ -24,12 +26,11 @@ Product *handleWithFunctions(int option, Product *list) {
             break;
         case 2:
             system("cls");
-            
             readProduct(list);
             break;
         case 3:
             system("cls");
-
+            founded = searchProduct(list);
             break;
         case 4:
             system("cls");
