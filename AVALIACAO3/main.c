@@ -13,13 +13,13 @@ int main() {
     Product *list = createVoidList();
     int option = 1;
 
-    //initApp();
+    initApp();
 
     while(option != 0) {
         option = menu();
         list = handleWithFunctions(option, list);
     }
-    free(list);
+    cleanCache(list);
 
     return 0;
 }

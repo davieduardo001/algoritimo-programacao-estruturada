@@ -130,10 +130,63 @@ Product *searchProduct(Product *list) {
     }
 }
 
-int updateProduct() {
-    return 0;
+void updateProduct(Product *list) {
+    Product *foundedProduct = searchProduct(list);
+
+    if(foundedProduct != NULL) {
+        printf("Digite a descricao do produto: ");
+        fflush(stdin);
+        fgets(foundedProduct->descricao, sizeof(foundedProduct->descricao), stdin);
+
+        printf("Digite a quantidade de produtos: ");
+        fflush(stdin);
+        scanf("%d", &foundedProduct->quantity);
+
+        printf("Digite o valor do produto: ");
+        fflush(stdin);
+        scanf("%f", &foundedProduct->value);
+    }
 }
 
-int deleteProduct(){
-    return 0;
+Product *removeProduct(Product *list){
+    Product *current = list;
+    Product *previous = NULL;
+
+    int searchedCode;
+
+    if(list != NULL) {
+        printf("Escreva o codigo do produto que deseja alterar: ");
+        scanf("%i", &searchedCode);
+
+        while(current != NULL && current->code != searchedCode) {
+            previous = current;
+            current = current->next;
+        }
+
+        if(current != NULL) {
+            if(previous != NULL) {
+                previous->next = current->next;
+            } else {
+                list = current->next;
+            }
+            free(current);
+            printf("Removido com sucesso!\n");
+        } else {
+            printf("Pessoa nao encontrada\n");
+        }
+        return list;
+    } else {
+        printf("Nenhum produto adicionado!\n");
+    }
+}
+
+void cleanCache(Product *list) {
+    Product *current = list;
+    Product *next;
+
+    while(current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
 }

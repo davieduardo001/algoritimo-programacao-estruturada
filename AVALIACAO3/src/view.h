@@ -6,7 +6,8 @@ int menu() {
     printf("1 - Criar\n");
     printf("2 - Listar\n");
     printf("3 - Pesquisar\n");
-    printf("4 - Remover\n");
+    printf("4 - Atualizar\n");
+    printf("5 - Deletar\n");
     printf("0 - sair do programa\n");
 
     printf("escolha uma das opcoes: ");
@@ -34,7 +35,11 @@ Product *handleWithFunctions(int option, Product *list) {
             break;
         case 4:
             system("cls");
-
+            updateProduct(list);
+            break;
+        case 5:
+            system("cls");
+            removeProduct(list);
             break;
         case 0:
             system("cls");
