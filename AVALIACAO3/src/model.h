@@ -1,4 +1,4 @@
-typedef struct {
+typedef struct Product{
     int code;
     char descricao[100];
     int quantity;

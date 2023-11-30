@@ -10,16 +10,20 @@ int menu() {
     printf("0 - sair do programa\n");
 
     printf("escolha uma das opcoes: ");
+    fflush(stdin);
     scanf("%d", &option);
 
     return option;
 }
 
-void handleWithFunctions(int option) {
+void handleWithFunctions(int option, Product *list) {
     switch(option) {
         case 1:
             system("cls");
-            
+            printf("entou nasldkfjlsd\n");
+            list = createProduct(list);
+            printf("saiuuu daquiiii\n");
+            printf("list code is: %i\n", list->code);
             break;
         case 2:
             system("cls");
