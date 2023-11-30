@@ -57,9 +57,9 @@ Product *createProduct(Product *list) {
 
     system("cls");
     printf("--CRIADO--\n\n");
-    printf("------\n");
-    printf("CODIGO N: %i\n\n* quantidade: %i, valor: %.2f\n\n", newProduct->code, newProduct->quantity, newProduct->value);
-    printf("* descricao: %s\n", newProduct->descricao);
+    printf("-------------------------------------\n");
+    printf("CODIGO N: %i\n\n---quantidade: %i\n\n---valor: R$%.2f\n\n", newProduct->code, newProduct->quantity, newProduct->value);
+    printf("---descricao: %s\n", newProduct->descricao);
 
     return newProduct;
 }
@@ -69,11 +69,12 @@ Product *putProduct(Product *list) {
 
     if(list == NULL) {
         return newProduct;
+
     } else {
         Product *current = list;
-
         //this will go through the whole list and stop in the last position;
         while(current->next != NULL) {
+            printf("THE ATUAL ID: %i\n", current->code);
             current = current->next;
         }
 
@@ -84,9 +85,20 @@ Product *putProduct(Product *list) {
 }
 
 
+void readProduct(Product *list) {
+    Product *current = list;
 
-int readProduct() {
-    return 0;
+    if(list == NULL) {
+        printf("nao a conteudo produtos adicionados!\n");
+    } else {
+        printf("\n--LIST--\n\n");
+        while(current != NULL) {
+            printf("-------------------------------------\n");
+            printf("CODIGO N: %i\n\n---quantidade: %i\n\n---valor: R$%.2f\n\n", current->code, current->quantity, current->value);
+            printf("---descricao: %s\n", current->descricao);
+            current = current->next; 
+        }
+    }
 }
 
 int updateProduct() {

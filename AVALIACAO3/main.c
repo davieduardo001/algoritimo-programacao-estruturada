@@ -17,8 +17,9 @@ int main() {
 
     while(option != 0) {
         option = menu();
-        handleWithFunctions(option, list);
+        list = handleWithFunctions(option, list);
     }
+    free(list);
 
     return 0;
 }

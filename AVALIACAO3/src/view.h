@@ -16,15 +16,16 @@ int menu() {
     return option;
 }
 
-void handleWithFunctions(int option, Product *list) {
+Product *handleWithFunctions(int option, Product *list) {
     switch(option) {
         case 1:
             system("cls");
-            list = createProduct(list);
+            list = putProduct(list);
             break;
         case 2:
             system("cls");
-
+            
+            readProduct(list);
             break;
         case 3:
             system("cls");
@@ -49,6 +50,8 @@ void handleWithFunctions(int option, Product *list) {
 
             printf("Opcao nao disponivel!!\n");
     }
+
+    return list;
 }
 
 int initApp() {
