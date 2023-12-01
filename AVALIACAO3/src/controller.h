@@ -172,7 +172,7 @@ Product *removeProduct(Product *list){
             free(current);
             printf("Removido com sucesso!\n");
         } else {
-            printf("Pessoa nao encontrada\n");
+            printf("Produto nao encontrada\n");
         }
         return list;
     } else {
