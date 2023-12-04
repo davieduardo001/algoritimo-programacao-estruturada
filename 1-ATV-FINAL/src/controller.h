@@ -123,7 +123,7 @@ Car *createCar(Car *list) {
                 break;
 
             default:
-                printf("digite um tipo de gasolina valido! ");
+                printf("digite um tipo de gasolina valido!\n");
                 break;
         }
     } while(gas!='a' && gas!='d' && gas!='g');
@@ -230,14 +230,6 @@ Car *searchCar(Car *list) {
     }
 }
 
-void updateCar(Car *list) {
-    Car *foundedProduct = searchCar(list);
-
-    if(foundedProduct != NULL) {
-        //RECEBER DADOS
-    }
-}
-
 void cleanCache(Car *list) {
     Car *current = list;
     Car *next;
@@ -254,19 +246,13 @@ int listOwnersOf2010WithDisel(Car *list) {
 
 
     if(current != NULL) {
-        do {
+        while(current != NULL) {
             if(current->year >= 2010 && current->gasType == "disel") {
-                printf("\n--ENCONTRADO--\n\n");
-
                 printf("-----------------\n\n");
                 printf("--PROPRIETARIO: %s\n", current->owner);
             }
-
-            if(current->next != NULL)
-                current = current->next;
-
-        } while(current->next != NULL);
-
+            current = current->next;
+        }
         return 0;
     } else printf("nem um registro encontrado!\n");
 
@@ -278,7 +264,7 @@ int jAndEndWithSomeNumbers(Car *list) {
     int verificationJ, verificationNumbers;
 
     if(current != NULL) {
-        do {
+        while(current != NULL) {
             verificationJ = 0;
             verificationNumbers = 0;
 
@@ -296,52 +282,9 @@ int jAndEndWithSomeNumbers(Car *list) {
                 printf("--PROPRIETARIO: %s\n", current->owner);
             }
 
-            if(current->next != NULL)
-                current = current->next;
+            current = current->next;
 
-        } while(current->next != NULL);
-
-        return 0;
-    } else printf("nem um registro encontrado!\n");
-
-    return 1;
-}
-
-int secondVowelSumIsEven(Car *list) {
-    Car *current = list;
-    int verificationVowel, verificationNumbers, sum;
-
-    if(current != NULL) {
-        do {
-            verificationVowel = 0;
-            verificationNumbers = 0;
-            sum = 0;
-
-            for(int i = 3; i < 7; i++) {
-                printf("n: %i\n", (current->plate[i] - '0'));
-                sum += (current->plate[i] - '0');
-            }
-
-            printf("sum: %i", sum);
-
-            if((sum % 2) == 0) 
-                verificationNumbers = 1;
-
-            if(current->plate[2] == 'A' || current->plate[2] == 'a' || current->plate[2] == 'E' || current->plate[2] == 'e' || current->plate[2] == 'I' || current->plate[2] == 'i' || current->plate[2] == 'O' || current->plate[2] == 'o')
-                verificationVowel = 1;
-
-            if(verificationVowel == 1  && verificationNumbers == 1 ) {
-                printf("\n--ENCONTRADO--\n\n");
-
-                printf("-----------------\n\n");
-                printf("--MODELO: %s\n", current->model);
-                printf("--COR: %s\n", current->color);
-            }
-
-            if(current->next != NULL)
-                current = current->next;
-
-        } while(current->next != NULL);
+        }
 
         return 0;
     } else printf("nem um registro encontrado!\n");
@@ -354,22 +297,19 @@ int secondVowelSumIsEven(Car *list) {
     int verificationVowel, verificationNumbers, sum;
 
     if(current != NULL) {
-        do {
+        while(current != NULL) {
             verificationVowel = 0;
             verificationNumbers = 0;
             sum = 0;
 
             for(int i = 3; i < 7; i++) {
-                printf("n: %i\n", (current->plate[i] - '0'));
                 sum += (current->plate[i] - '0');
             }
-
-            printf("sum: %i", sum);
 
             if((sum % 2) == 0) 
                 verificationNumbers = 1;
 
-            if(current->plate[2] == 'A' || current->plate[2] == 'a' || current->plate[2] == 'E' || current->plate[2] == 'e' || current->plate[2] == 'I' || current->plate[2] == 'i' || current->plate[2] == 'O' || current->plate[2] == 'o')
+            if(current->plate[1] == 'A' || current->plate[1] == 'a' || current->plate[1] == 'E' || current->plate[1] == 'e' || current->plate[1] == 'I' || current->plate[1] == 'i' || current->plate[1] == 'O' || current->plate[1] == 'o')
                 verificationVowel = 1;
 
             if(verificationVowel == 1  && verificationNumbers == 1 ) {
@@ -380,13 +320,59 @@ int secondVowelSumIsEven(Car *list) {
                 printf("--COR: %s\n", current->color);
             }
 
-            if(current->next != NULL)
-                current = current->next;
-
-        } while(current->next != NULL);
+            current = current->next;
+        }
 
         return 0;
     } else printf("nem um registro encontrado!\n");
 
     return 1;
+}
+
+Car *updateCar(Car *list) {
+    Car *current = list;
+    int if0NumberExists = 1, chassiBase, verification = 1;
+
+    if(current != NULL) {
+        printf("Escreva um chassi para alterar: ");
+        fflush(stdin);
+        scanf("%i", &chassiBase);
+
+        do {
+            if(chassiBase == current->chassis) {
+                verification = 0;
+                break;
+            }
+
+            if(current->next != NULL)
+                current = current->next;
+        } while(current->next != NULL);
+
+        for(int i = 3; i < 7; i++) {
+            if(current->plate[i] == '0') {
+                if0NumberExists = 0;
+                printf("o proprietario nao pode ser alterado!\n");
+            }
+        }
+
+        if(verification == 0 && if0NumberExists == 1) {
+            printf("ENCONTRADO GRAI!!\n");
+            printf("-----------------\n\n");
+            printf("--chassi: %i\n", current->chassis);
+            printf("--modelo: %s\n", current->model);
+            printf("--combustivel: %s\n", current->gasType);
+            printf("--cor: %s\n", current->color);
+            printf("--ano: %i\n", current->year);
+            printf("--placa: %s\n", current->plate);
+            printf("--PROPRIETARIO: %s\n", current->owner);
+
+            printf("escreva o novo proprietario: ");
+            fflush(stdin);
+            fgets(current->owner, sizeof(current->owner), stdin);
+
+            return list;
+        }
+    }
+    printf("carro nao encontrado!\n");
+    return list;
 }

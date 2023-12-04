@@ -44,7 +44,7 @@ Car *handleWithFunctions(int option, Car *list) {
             break;
         case 6:
             system("cls");
-            updateCar(list); // trocar proprietario
+            list = updateCar(list); // trocar proprietario
             break;
         case 0:
             system("cls");
