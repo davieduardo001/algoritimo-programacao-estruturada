@@ -248,3 +248,62 @@ void cleanCache(Car *list) {
         current = next;
     }
 }
+
+int listOwnersOf2010WithDisel(Car *list) {
+    Car *current = list;
+
+
+    if(current != NULL) {
+        do {
+            if(current->year >= 2010 && current->gasType == "disel") {
+                printf("\n--ENCONTRADO--\n\n");
+
+                printf("-----------------\n\n");
+                printf("--PROPRIETARIO: %s\n", current->owner);
+            }
+
+            if(current->next != NULL)
+                current = current->next;
+
+        } while(current->next != NULL);
+
+        return 0;
+    } else printf("nem um registro encontrado!\n");
+
+    return 1;
+}
+
+int jAndEndWithSomeNumbers(Car *list) {
+    Car *current = list;
+    int verificationJ, verificationNumbers;
+
+    printf("ultimo: %c\n primeiro: %c\n", current->plate[6], current->plate[0]);
+    if(current != NULL) {
+        do {
+            verificationJ = 0;
+            verificationNumbers = 0;
+
+            if(current->plate[6] == '0' || current->plate[6] == '2' || current->plate[6] == '4' || current->plate[6] == '7') 
+                verificationNumbers = 1;
+
+            if(current->plate[0] == 'J' || current->plate[0] == 'j')
+                verificationJ = 1;
+
+            if(verificationJ == 1  && verificationNumbers == 1 ) {
+                printf("\n--ENCONTRADO--\n\n");
+
+                printf("-----------------\n\n");
+                printf("--PLACA: %s\n", current->plate);
+                printf("--PROPRIETARIO: %s\n", current->owner);
+            }
+
+            if(current->next == NULL)
+                current = current->next;
+
+        } while(current->next != NULL);
+
+        return 0;
+    } else printf("nem um registro encontrado!\n");
+
+    return 1;
+}

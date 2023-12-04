@@ -32,11 +32,11 @@ Car *handleWithFunctions(int option, Car *list) {
             break;
         case 3:
             system("cls");
-            //// posterior a 10
+            listOwnersOf2010WithDisel(list);
             break;
         case 4:
             system("cls");
-            /////iniciadas em J
+            jAndEndWithSomeNumbers(list);
             break;
         case 5:
             system("cls");
