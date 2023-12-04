@@ -40,21 +40,15 @@ int size_of_a_string(char *str) {
 
 char *verifyPlate(Car *list, Car *newCar) {
 
-    char *platePtr;
     char plate[10];
     int sizeofThePlate, i, quantityOfAlphabetic, quantityOfNumbers, verify = 0;
 
     do {
-        printf("Escreva a placa: ");
+        printf("*Escreva a placa: ");
         fflush(stdin);
         fgets(plate, sizeof(plate), stdin);
 
         sizeofThePlate = size_of_a_string(plate);
-
-        strcpy(platePtr, plate);
-        printf("size: %i\n", sizeofThePlate);
-        printf("plate value: %s\n", plate);
-        printf("platePTR value: %s\n", platePtr);
 
         //verify if the last 4 digits are numbers
         verify = 0;
@@ -83,6 +77,8 @@ char *verifyPlate(Car *list, Car *newCar) {
 
     } while(verify != 0);
 
+    strcpy(newCar->plate, plate);
+
     return newCar->plate;
 }
 
@@ -95,22 +91,21 @@ Car *createCar(Car *list) {
     }
 
     newCar->chassis = createId(list, newCar);
+    printf("*Chassi: %i\n", newCar->chassis);
 
-    printf("Chassi: %i\n", newCar->chassis);
+    strcpy(newCar->plate, verifyPlate(list, newCar));
 
-    newCar->plate = verifyPlate(list, newCar);
-
-    printf("Qual o proprietario do veiculo: ");
+    printf("*Qual o proprietario do veiculo: ");
     fflush(stdin);
     fgets(newCar->owner, sizeof(newCar->owner), stdin);
 
-    printf("Qual o modelo do veiculo: ");
+    printf("*Qual o modelo do veiculo: ");
     fflush(stdin);
     fgets(newCar->model, sizeof(newCar->model), stdin);
 
     char gas;
     do {
-        printf("Qual o tipo de combustivel do veiculo [a (alcool), d (disel) ou g (gasolina) ]: ");
+        printf("*Qual o tipo de combustivel do veiculo [a (alcool), d (disel) ou g (gasolina) ]: ");
         fflush(stdin);
         scanf("%c", &gas);
         switch (gas)
@@ -133,11 +128,11 @@ Car *createCar(Car *list) {
         }
     } while(gas!='a' && gas!='d' && gas!='g');
 
-    printf("Qual a cor do veiculo: ");
+    printf("*Qual a cor do veiculo: ");
     fflush(stdin);
     fgets(newCar->color, sizeof(newCar->color), stdin);
 
-    printf("Ano do veiculo: ");
+    printf("*Ano do veiculo: ");
     fflush(stdin);
     scanf("%i", &newCar->year);
 
@@ -152,7 +147,7 @@ Car *putCar(Car *list) {
     system("cls");
 
     printf("--CRIADO--\n\n");
-    printf("-- Chassi: %i\n", newCar->chassis);
+    printf("--Chassi: %i\n", newCar->chassis);
     printf("--PROPRIETARIO: %s\n", newCar->owner);
     printf("--MODELO: %s\n", newCar->model);
     printf("--COMBUSTIVEL: %s\n", newCar->gasType);
@@ -167,7 +162,6 @@ Car *putCar(Car *list) {
         Car *current = list;
         //this will go through the whole list and stop in the last position;
         while(current->next != NULL) {
-            printf("THE ATUAL CHASSI: %i\n", current->chassis);
             current = current->next;
         }
 

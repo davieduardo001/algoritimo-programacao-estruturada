@@ -14,6 +14,8 @@ int main() {
     Car *list = createVoidList();
     int option = 1;
 
+    system("cls");
+
     while(option != 0) {
         option = menu();
         list = handleWithFunctions(option, list);

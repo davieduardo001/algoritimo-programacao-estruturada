@@ -5,7 +5,7 @@ typedef struct Car{
     char *gasType;
     char color[50];
     int year;
-    char *plate;
+    char plate[10];
 
     struct Car *next; 
 } Car;
