@@ -29,6 +29,63 @@ int createId(Car *list, Car *newCar) {
     return chassis;
 }
 
+int size_of_a_string(char *str) {
+    int lenght = 0;
+
+    while(str[lenght] != '\0')
+        lenght++;
+
+    return lenght;
+}
+
+char *verifyPlate(Car *list, Car *newCar) {
+
+    char *platePtr;
+    char plate[10];
+    int sizeofThePlate, i, quantityOfAlphabetic, quantityOfNumbers, verify = 0;
+
+    do {
+        printf("Escreva a placa: ");
+        fflush(stdin);
+        fgets(plate, sizeof(plate), stdin);
+
+        sizeofThePlate = size_of_a_string(plate);
+
+        strcpy(platePtr, plate);
+        printf("size: %i\n", sizeofThePlate);
+        printf("plate value: %s\n", plate);
+        printf("platePTR value: %s\n", platePtr);
+
+        //verify if the last 4 digits are numbers
+        verify = 0;
+
+        for(i = 0; i < 3; i++) {
+            if(!isalpha(plate[i])) {
+                printf("placa com os primeiros 3 digitos devem ser caracteres!\n");
+                verify = 1;
+                break;
+            }
+        }
+
+        if(sizeofThePlate != 8) {
+            printf("a placa deve conter 8 digitos totais!\n");
+            verify = 1;
+        }
+
+        for(; i < 7; i++) {
+            if(!isdigit(plate[i])) {
+                printf("placa com os ultimos 4 digitos devem ser numeros!\n");
+                verify = 1;
+                break;
+            }
+        }
+
+
+    } while(verify != 0);
+
+    return newCar->plate;
+}
+
 Car *createCar(Car *list) {
     Car *newCar = (Car*)malloc(sizeof(Car));
 
@@ -40,6 +97,8 @@ Car *createCar(Car *list) {
     newCar->chassis = createId(list, newCar);
 
     printf("Chassi: %i\n", newCar->chassis);
+
+    newCar->plate = verifyPlate(list, newCar);
 
     printf("Qual o proprietario do veiculo: ");
     fflush(stdin);
@@ -81,10 +140,6 @@ Car *createCar(Car *list) {
     printf("Ano do veiculo: ");
     fflush(stdin);
     scanf("%i", &newCar->year);
-
-    printf("Escreva a placa: ");
-    fflush(stdin);
-    fgets(newCar->plate, sizeof(newCar->plate), stdin);
 
     newCar->next = NULL;
 
@@ -131,7 +186,7 @@ void readCar(Car *list) {
     } else {
         printf("\n--LIST--\n\n");
         while(current != NULL) {
-            //PRINT THE CARS
+
             printf("-----------------\n\n");
             printf("-- Chassi: %i\n", current->chassis);
             printf("--PROPRIETARIO: %s\n", current->owner);
