@@ -40,7 +40,7 @@ Car *handleWithFunctions(int option, Car *list) {
             break;
         case 5:
             system("cls");
-            //////segunda letra vogal soma par
+            secondVowelSumIsEven(list);
             break;
         case 6:
             system("cls");

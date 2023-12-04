@@ -277,7 +277,6 @@ int jAndEndWithSomeNumbers(Car *list) {
     Car *current = list;
     int verificationJ, verificationNumbers;
 
-    printf("ultimo: %c\n primeiro: %c\n", current->plate[6], current->plate[0]);
     if(current != NULL) {
         do {
             verificationJ = 0;
@@ -297,7 +296,91 @@ int jAndEndWithSomeNumbers(Car *list) {
                 printf("--PROPRIETARIO: %s\n", current->owner);
             }
 
-            if(current->next == NULL)
+            if(current->next != NULL)
+                current = current->next;
+
+        } while(current->next != NULL);
+
+        return 0;
+    } else printf("nem um registro encontrado!\n");
+
+    return 1;
+}
+
+int secondVowelSumIsEven(Car *list) {
+    Car *current = list;
+    int verificationVowel, verificationNumbers, sum;
+
+    if(current != NULL) {
+        do {
+            verificationVowel = 0;
+            verificationNumbers = 0;
+            sum = 0;
+
+            for(int i = 3; i < 7; i++) {
+                printf("n: %i\n", (current->plate[i] - '0'));
+                sum += (current->plate[i] - '0');
+            }
+
+            printf("sum: %i", sum);
+
+            if((sum % 2) == 0) 
+                verificationNumbers = 1;
+
+            if(current->plate[2] == 'A' || current->plate[2] == 'a' || current->plate[2] == 'E' || current->plate[2] == 'e' || current->plate[2] == 'I' || current->plate[2] == 'i' || current->plate[2] == 'O' || current->plate[2] == 'o')
+                verificationVowel = 1;
+
+            if(verificationVowel == 1  && verificationNumbers == 1 ) {
+                printf("\n--ENCONTRADO--\n\n");
+
+                printf("-----------------\n\n");
+                printf("--MODELO: %s\n", current->model);
+                printf("--COR: %s\n", current->color);
+            }
+
+            if(current->next != NULL)
+                current = current->next;
+
+        } while(current->next != NULL);
+
+        return 0;
+    } else printf("nem um registro encontrado!\n");
+
+    return 1;
+}
+
+int secondVowelSumIsEven(Car *list) {
+    Car *current = list;
+    int verificationVowel, verificationNumbers, sum;
+
+    if(current != NULL) {
+        do {
+            verificationVowel = 0;
+            verificationNumbers = 0;
+            sum = 0;
+
+            for(int i = 3; i < 7; i++) {
+                printf("n: %i\n", (current->plate[i] - '0'));
+                sum += (current->plate[i] - '0');
+            }
+
+            printf("sum: %i", sum);
+
+            if((sum % 2) == 0) 
+                verificationNumbers = 1;
+
+            if(current->plate[2] == 'A' || current->plate[2] == 'a' || current->plate[2] == 'E' || current->plate[2] == 'e' || current->plate[2] == 'I' || current->plate[2] == 'i' || current->plate[2] == 'O' || current->plate[2] == 'o')
+                verificationVowel = 1;
+
+            if(verificationVowel == 1  && verificationNumbers == 1 ) {
+                printf("\n--ENCONTRADO--\n\n");
+
+                printf("-----------------\n\n");
+                printf("--MODELO: %s\n", current->model);
+                printf("--COR: %s\n", current->color);
+            }
+
+            if(current->next != NULL)
                 current = current->next;
 
         } while(current->next != NULL);
