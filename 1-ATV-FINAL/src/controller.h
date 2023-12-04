@@ -132,7 +132,15 @@ void readCar(Car *list) {
         printf("\n--LIST--\n\n");
         while(current != NULL) {
             //PRINT THE CARS
-            printf("CHASSI: %i\n", current->chassis);
+            printf("-----------------\n\n");
+            printf("-- Chassi: %i\n", current->chassis);
+            printf("--PROPRIETARIO: %s\n", current->owner);
+            printf("--MODELO: %s\n", current->model);
+            printf("--COMBUSTIVEL: %s\n", current->gasType);
+            printf("--COR: %s\n", current->color);
+            printf("--ANO: %i\n", current->year);
+            printf("--PLACA: %s\n", current->plate);
+
             current = current->next; 
         }
     }
@@ -151,9 +159,17 @@ Car *searchCar(Car *list) {
 
         while(current != NULL) {
             if(current->chassis == chassis) {
-                printf("--ENCONTRADO--\n\n");
 
-                //EXPELIR DADOS
+                printf("\n--ENCONTRADO--\n\n");
+
+                printf("-----------------\n\n");
+                printf("-- Chassi: %i\n", current->chassis);
+                printf("--PROPRIETARIO: %s\n", current->owner);
+                printf("--MODELO: %s\n", current->model);
+                printf("--COMBUSTIVEL: %s\n", current->gasType);
+                printf("--COR: %s\n", current->color);
+                printf("--ANO: %i\n", current->year);
+                printf("--PLACA: %s\n", current->plate);
 
                 return current;
             }

@@ -14,7 +14,6 @@ int main() {
     int option = 1;
 
     while(option != 0) {
-        system("cls");
         option = menu();
         list = handleWithFunctions(option, list);
     }
